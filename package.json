@@ -2,6 +2,10 @@
   "name": "pet-shelter",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  },
   "dependencies": {
     "node-sass": "^4.12.0",
     "normalize.css": "^8.0.1",
