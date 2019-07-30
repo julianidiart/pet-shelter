@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PetsPage correctly 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+  >
+    Add pet
+  </button>
+  <Connect(PetsList) />
+</div>
+`;

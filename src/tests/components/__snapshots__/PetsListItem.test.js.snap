@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PetsListItem correctly 1`] = `
+<div>
+  <Link
+    to="/pets/1"
+  >
+    <h3>
+      Marla
+    </h3>
+  </Link>
+</div>
+`;

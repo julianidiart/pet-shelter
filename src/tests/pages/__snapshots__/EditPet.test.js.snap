@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EditPetPage 1`] = `
+<div>
+  <PetForm
+    onSubmit={[Function]}
+    pet={
+      Object {
+        "birthDate": -63158400000,
+        "id": "1",
+        "name": "Marla",
+      }
+    }
+  />
+  <button
+    onClick={[Function]}
+  >
+    Remove
+  </button>
+</div>
+`;

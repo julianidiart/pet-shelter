@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import moment from "moment";
+import { SingleDatePicker } from "react-dates";
 
 export default class PetForm extends Component {
   constructor(props) {
@@ -6,6 +8,8 @@ export default class PetForm extends Component {
 
     this.state = {
       name: props.pet ? props.pet.name : "",
+      birthDate: props.pet ? moment(props.pet.birthDate) : moment(),
+      calendarFocused: false,
       error: ""
     };
   }
@@ -15,6 +19,16 @@ export default class PetForm extends Component {
     this.setState(() => ({ name }));
   };
 
+  onDateChange = birthDate => {
+    if (birthDate) {
+      this.setState(() => ({ birthDate }));
+    }
+  };
+
+  onFocusChange = ({ focused }) => {
+    this.setState(() => ({ calendarFocused: focused }));
+  };
+
   onSubmit = e => {
     e.preventDefault();
 
@@ -22,10 +36,11 @@ export default class PetForm extends Component {
       const error = "";
       this.setState(() => ({ error }));
       this.props.onSubmit({
-        name: this.state.name
+        name: this.state.name,
+        birthDate: this.state.birthDate.valueOf()
       });
     } else {
-      const error = "Debe llenar todos los campos obligatorios";
+      const error = "The pet should have a name!";
       this.setState(() => ({ error }));
     }
   };
@@ -38,11 +53,20 @@ export default class PetForm extends Component {
           <input
             autoFocus
             onChange={this.onNameChange}
-            placeholder="Nombre de la mascota"
+            placeholder="Pet name"
             type="text"
             value={this.state.name}
           />
-          <button>Guardar Mascota</button>
+          <SingleDatePicker
+            date={this.state.birthDate}
+            onDateChange={this.onDateChange}
+            focused={this.state.calendarFocused}
+            onFocusChange={this.onFocusChange}
+            numberOfMonths={1}
+            isOutsideRange={() => false}
+            displayFormat={() => "DD/MM/YYYY"}
+          />
+          <button>Save Pet</button>
         </form>
       </div>
     );

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render PetsList with empty message 1`] = `
+<div>
+  <p>
+    Add a pet to start!
+  </p>
+</div>
+`;
+
+exports[`should render PetsList with pets 1`] = `
+<div>
+  <_default
+    birthDate={-63158400000}
+    id="1"
+    key="1"
+    name="Marla"
+  />
+  <_default
+    birthDate={-47437200000}
+    id="2"
+    key="2"
+    name="Bimba"
+  />
+  <_default
+    birthDate={-15901200000}
+    id="3"
+    key="3"
+    name="Aimee"
+  />
+  <_default
+    birthDate={-110595600000}
+    id="4"
+    key="4"
+    name="Maia"
+  />
+  <_default
+    birthDate={-347155200000}
+    id="5"
+    key="5"
+    name="Emma"
+  />
+  <_default
+    birthDate={-252460800000}
+    id="6"
+    key="6"
+    name="Tommy"
+  />
+  <_default
+    birthDate={-283996800000}
+    id="7"
+    key="7"
+    name="Bello Bruno"
+  />
+  <_default
+    birthDate={-126230400000}
+    id="8"
+    key="8"
+    name="Bubu"
+  />
+  <_default
+    birthDate={-157766400000}
+    id="9"
+    key="9"
+    name="Blaky"
+  />
+</div>
+`;

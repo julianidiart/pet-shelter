@@ -1,4 +1,4 @@
-import { addPet, editPet, removePet } from "./pets";
+import { addPet, editPet, removePet } from "../../actions/pets";
 
 test("should setup remove pet action object", () => {
   const action = removePet("123abc");

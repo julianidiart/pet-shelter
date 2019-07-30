@@ -1,29 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import PetForm from "../../../components/PetForm";
 import { editPet, removePet } from "../../../actions/pets";
 
-const EditPetPage = props => {
-  return (
-    <div>
-      <PetForm
-        pet={props.pet}
-        onSubmit={pet => {
-          props.dispatch(editPet(props.pet.id, pet));
-          props.history.push("/pets");
-        }}
-      />
-      <button
-        onClick={() => {
-          props.dispatch(removePet(props.pet.id));
-          props.history.push("/pets");
-        }}
-      >
-        Eliminar
-      </button>
-    </div>
-  );
-};
+export class EditPetPage extends Component {
+  onSubmit = pet => {
+    this.props.editPet(this.props.pet.id, pet);
+    this.props.history.push("/pets");
+  };
+  onClick = () => {
+    this.props.removePet(this.props.pet.id);
+    this.props.history.push("/pets");
+  };
+  render() {
+    return (
+      <div>
+        <PetForm pet={this.props.pet} onSubmit={this.onSubmit} />
+        <button onClick={this.onClick}>Remove</button>
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state, props) => {
   return {
@@ -31,4 +28,12 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-export default connect(mapStateToProps)(EditPetPage);
+const mapDispatchToProps = dispatch => ({
+  editPet: (id, pet) => dispatch(editPet(id, pet)),
+  removePet: id => dispatch(removePet(id))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditPetPage);

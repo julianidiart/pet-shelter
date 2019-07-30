@@ -1,5 +1,5 @@
-import petsReducer from "./pets";
-import pets from "../mocks/pets";
+import petsReducer from "../../reducers/pets";
+import pets from "../fixtures/pets";
 
 test("should set default state", () => {
   const state = petsReducer(undefined, { type: "@@INIT" });
