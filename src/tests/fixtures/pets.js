@@ -4,64 +4,90 @@ export default [
   {
     id: "1",
     name: "Marla",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(2, "years")
-      .valueOf()
+      .valueOf(),
+    chip: "123ABC123",
+    place: "Barchetta",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
+    sex: "F"
   },
   {
     id: "2",
     name: "Bimba",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(1.5, "years")
-      .valueOf()
+      .valueOf(),
+    chip: "123ABC123",
+    place: "Barchetta",
+    sex: "F"
   },
   {
     id: "3",
     name: "Aimee",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(6, "months")
-      .valueOf()
+      .valueOf(),
+    chip: "123ABC123",
+    place: "Barchetta",
+    sex: "F"
   },
   {
     id: "4",
     name: "Maia",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(3.5, "years")
-      .valueOf()
+      .valueOf(),
+    place: "Campagna",
+    sex: "F"
   },
   {
     id: "5",
     name: "Emma",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(11, "years")
-      .valueOf()
+      .valueOf(),
+    place: "Barchetta",
+    sex: "F"
   },
   {
     id: "6",
     name: "Tommy",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(8, "years")
-      .valueOf()
+      .valueOf(),
+    chip: "123ABC123",
+    place: "Macelo",
+    sex: "M"
   },
   {
     id: "7",
     name: "Bello Bruno",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(9, "years")
-      .valueOf()
+      .valueOf(),
+    place: "Sasi",
+    sex: "M"
   },
   {
     id: "8",
     name: "Bubu",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(4, "years")
-      .valueOf()
+      .valueOf(),
+    chip: "123ABC123",
+    place: "Sasi",
+    sex: "M"
   },
   {
     id: "9",
     name: "Blaky",
-    birthDate: moment(0)
+    birthdate: moment(0)
       .subtract(5, "years")
-      .valueOf()
+      .valueOf(),
+    place: "Macelo",
+    sex: "M"
   }
 ];

@@ -40,7 +40,11 @@ test("should call onSubmit prop for valid form submission", () => {
   expect(wrapper.state("error")).toBe("");
   expect(onSubmit).toHaveBeenLastCalledWith({
     name: pets[0].name,
-    birthDate: pets[0].birthDate
+    birthdate: pets[0].birthdate,
+    chip: pets[0].chip,
+    place: pets[0].place,
+    images: pets[0].images,
+    sex: pets[0].sex
   });
 });
 
@@ -48,7 +52,7 @@ test("should set new date on date change", () => {
   const now = moment();
   const wrapper = shallow(<PetForm />);
   wrapper.find(SingleDatePicker).prop("onDateChange")(now);
-  expect(wrapper.state("birthDate")).toEqual(now);
+  expect(wrapper.state("birthdate")).toEqual(now);
 });
 
 test("should set calendar focus on change", () => {

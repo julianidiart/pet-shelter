@@ -8,7 +8,11 @@ export default class PetForm extends Component {
 
     this.state = {
       name: props.pet ? props.pet.name : "",
-      birthDate: props.pet ? moment(props.pet.birthDate) : moment(),
+      birthdate: props.pet ? moment(props.pet.birthdate) : moment(),
+      chip: props.pet ? props.pet.chip : "",
+      place: props.pet ? props.pet.place : "",
+      images: props.pet ? props.pet.images : [],
+      sex: props.pet ? props.pet.sex : "",
       calendarFocused: false,
       error: ""
     };
@@ -19,9 +23,9 @@ export default class PetForm extends Component {
     this.setState(() => ({ name }));
   };
 
-  onDateChange = birthDate => {
-    if (birthDate) {
-      this.setState(() => ({ birthDate }));
+  onDateChange = birthdate => {
+    if (birthdate) {
+      this.setState(() => ({ birthdate }));
     }
   };
 
@@ -37,7 +41,11 @@ export default class PetForm extends Component {
       this.setState(() => ({ error }));
       this.props.onSubmit({
         name: this.state.name,
-        birthDate: this.state.birthDate.valueOf()
+        birthdate: this.state.birthdate.valueOf(),
+        chip: this.state.chip,
+        place: this.state.place,
+        images: this.state.images,
+        sex: this.state.sex
       });
     } else {
       const error = "The pet should have a name!";
@@ -58,7 +66,7 @@ export default class PetForm extends Component {
             value={this.state.name}
           />
           <SingleDatePicker
-            date={this.state.birthDate}
+            date={this.state.birthdate}
             onDateChange={this.onDateChange}
             focused={this.state.calendarFocused}
             onFocusChange={this.onFocusChange}

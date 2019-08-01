@@ -6,8 +6,31 @@ exports[`should render PetsListItem correctly 1`] = `
     to="/pets/1"
   >
     <h3>
+      Name: 
       Marla
     </h3>
+    <p>
+      Sex: 
+      F
+    </p>
+    <p>
+      Birthdate: 
+    </p>
+    <p>
+      Place: 
+      Barchetta
+    </p>
+    <p>
+      Chip? 
+      Yes, nº 123ABC123
+    </p>
+    <h2>
+      Images
+    </h2>
+    <img
+      alt="Marla"
+      src="https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    />
   </Link>
 </div>
 `;

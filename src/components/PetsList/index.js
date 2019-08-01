@@ -2,13 +2,13 @@ import React from "react";
 import PetsListItem from "./PetsListItem";
 import { connect } from "react-redux";
 
-export const PetsList = props => (
+export const PetsList = ({ pets }) => (
   <div>
-    {props.pets.length === 0 ? (
+    {pets.length === 0 ? (
       <p>Add a pet to start!</p>
     ) : (
-      props.pets &&
-      props.pets.map(pet => {
+      pets &&
+      pets.map(pet => {
         return <PetsListItem key={pet.id} {...pet} />;
       })
     )}

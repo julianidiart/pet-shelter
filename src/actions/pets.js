@@ -9,8 +9,14 @@ export const addPet = pet => ({
 
 export const startAddPet = (petData = {}) => {
   return dispatch => {
-    const { name = "", birthDate = moment() } = petData;
-    const pet = { name, birthDate };
+    const {
+      name = "",
+      birthdate = moment(),
+      chip = "",
+      place = "",
+      images = []
+    } = petData;
+    const pet = { name, birthdate, chip, place, images };
     database
       .ref("pet")
       .push(pet)
