@@ -11,14 +11,15 @@ export const startAddPet = (petData = {}) => {
   return dispatch => {
     const {
       name = "",
-      birthdate = moment(),
+      birthdate = moment(0).valueOf(),
       chip = "",
       place = "",
-      images = []
+      images = [],
+      sex = ""
     } = petData;
-    const pet = { name, birthdate, chip, place, images };
-    database
-      .ref("pet")
+    const pet = { name, birthdate, chip, place, images, sex };
+    return database
+      .ref("pets")
       .push(pet)
       .then(ref => {
         dispatch(addPet({ id: ref.key, ...pet }));
