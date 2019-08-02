@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import AppRouter from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
+import { startSetPets } from "./actions/pets";
 
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
@@ -19,7 +20,11 @@ const app = (
   </Provider>
 );
 
-ReactDOM.render(app, document.getElementById("root"));
+ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
+
+store.dispatch(startSetPets()).then(() => {
+  ReactDOM.render(app, document.getElementById("root"));
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -28,6 +28,11 @@ exports[`should render PetsList with pets 1`] = `
     birthdate={-47437200000}
     chip="123ABC123"
     id="2"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="2"
     name="Bimba"
     place="Barchetta"
@@ -37,6 +42,11 @@ exports[`should render PetsList with pets 1`] = `
     birthdate={-15901200000}
     chip="123ABC123"
     id="3"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="3"
     name="Aimee"
     place="Barchetta"
@@ -44,7 +54,13 @@ exports[`should render PetsList with pets 1`] = `
   />
   <_default
     birthdate={-110595600000}
+    chip=""
     id="4"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="4"
     name="Maia"
     place="Campagna"
@@ -52,7 +68,13 @@ exports[`should render PetsList with pets 1`] = `
   />
   <_default
     birthdate={-347155200000}
+    chip=""
     id="5"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="5"
     name="Emma"
     place="Barchetta"
@@ -62,6 +84,11 @@ exports[`should render PetsList with pets 1`] = `
     birthdate={-252460800000}
     chip="123ABC123"
     id="6"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="6"
     name="Tommy"
     place="Macelo"
@@ -69,7 +96,13 @@ exports[`should render PetsList with pets 1`] = `
   />
   <_default
     birthdate={-283996800000}
+    chip=""
     id="7"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="7"
     name="Bello Bruno"
     place="Sasi"
@@ -79,6 +112,11 @@ exports[`should render PetsList with pets 1`] = `
     birthdate={-126230400000}
     chip="123ABC123"
     id="8"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="8"
     name="Bubu"
     place="Sasi"
@@ -86,7 +124,13 @@ exports[`should render PetsList with pets 1`] = `
   />
   <_default
     birthdate={-157766400000}
+    chip=""
     id="9"
+    images={
+      Array [
+        "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
+      ]
+    }
     key="9"
     name="Blaky"
     place="Macelo"

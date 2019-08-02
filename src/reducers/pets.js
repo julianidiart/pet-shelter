@@ -17,6 +17,8 @@ export default (state = petsReducerDefaultState, action) => {
           return pet;
         }
       });
+    case "SET_PETS":
+      return action.pets;
     default:
       return state;
   }

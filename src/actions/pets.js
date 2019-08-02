@@ -39,3 +39,29 @@ export const editPet = (id, pet) => ({
   id,
   pet
 });
+
+// SET_PET
+export const setPets = pets => ({
+  type: "SET_PETS",
+  pets
+});
+
+export const startSetPets = () => {
+  return dispatch => {
+    return database
+      .ref("pets")
+      .once("value")
+      .then(snapshot => {
+        const pets = [];
+
+        snapshot.forEach(childSnapshot => {
+          pets.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+
+        dispatch(setPets(pets));
+      });
+  };
+};

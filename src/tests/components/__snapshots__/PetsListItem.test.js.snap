@@ -15,6 +15,7 @@ exports[`should render PetsListItem correctly 1`] = `
     </p>
     <p>
       Birthdate: 
+      01/01/1968
     </p>
     <p>
       Place: 
@@ -29,6 +30,7 @@ exports[`should render PetsListItem correctly 1`] = `
     </h2>
     <img
       alt="Marla"
+      key="1"
       src="https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
     />
   </Link>

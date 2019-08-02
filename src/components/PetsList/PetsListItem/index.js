@@ -12,8 +12,8 @@ export default ({ id, name, birthdate, chip, place, images, sex }) => {
         <p>Place: {place}</p>
         <p>Chip? {chip === "" ? "No" : "Yes, nº " + chip}</p>
         <h2>Images</h2>
-        {images.length > 0 ? (
-          images.map(url => <img src={url} alt={name} />)
+        {images && images.length > 0 ? (
+          images.map(url => <img key={id} src={url} alt={name} />)
         ) : (
           <p>No images yet!</p>
         )}

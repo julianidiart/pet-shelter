@@ -1,11 +1,29 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import moment from "moment";
-import { startAddPet, addPet, editPet, removePet } from "../../actions/pets";
+import {
+  startAddPet,
+  addPet,
+  editPet,
+  removePet,
+  setPets,
+  startSetPets
+} from "../../actions/pets";
 import pets from "../fixtures/pets";
 import database from "../../firebase";
 
 const createMockStore = configureMockStore([thunk]);
+
+beforeEach(done => {
+  const petsData = {};
+  pets.forEach(({ id, name, birthdate, chip, place, images, sex }) => {
+    petsData[id] = { name, birthdate, chip, place, images, sex };
+  });
+  database
+    .ref("pets")
+    .set(petsData)
+    .then(() => done());
+});
 
 test("should setup remove pet action object", () => {
   const action = removePet("123abc");
@@ -93,4 +111,24 @@ test("should add pet with defaults to database and store", done => {
       expect({ ...snapshot.val(), images: [] }).toEqual(petDefaultData);
       done();
     });
+});
+
+test("should setup set pets action object with data", () => {
+  const action = setPets(pets);
+  expect(action).toEqual({
+    type: "SET_PETS",
+    pets
+  });
+});
+
+test("should fetch the expenses from firebase", done => {
+  const store = createMockStore({});
+  store.dispatch(startSetPets()).then(() => {
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: "SET_PETS",
+      pets
+    });
+    done();
+  });
 });

@@ -22,6 +22,9 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Barchetta",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "F"
   },
   {
@@ -32,6 +35,9 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Barchetta",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "F"
   },
   {
@@ -40,7 +46,11 @@ export default [
     birthdate: moment(0)
       .subtract(3.5, "years")
       .valueOf(),
+    chip: "",
     place: "Campagna",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "F"
   },
   {
@@ -49,7 +59,11 @@ export default [
     birthdate: moment(0)
       .subtract(11, "years")
       .valueOf(),
+    chip: "",
     place: "Barchetta",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "F"
   },
   {
@@ -60,6 +74,9 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Macelo",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "M"
   },
   {
@@ -68,7 +85,11 @@ export default [
     birthdate: moment(0)
       .subtract(9, "years")
       .valueOf(),
+    chip: "",
     place: "Sasi",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "M"
   },
   {
@@ -79,6 +100,9 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Sasi",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "M"
   },
   {
@@ -87,7 +111,11 @@ export default [
     birthdate: moment(0)
       .subtract(5, "years")
       .valueOf(),
+    chip: "",
     place: "Macelo",
+    images: [
+      "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
+    ],
     sex: "M"
   }
 ];

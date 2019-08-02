@@ -62,3 +62,12 @@ test("should not edit a pet if id not found", () => {
   const state = petsReducer(pets, action);
   expect(state).toEqual(pets);
 });
+
+test("should set pets", () => {
+  const action = {
+    type: "SET_PETS",
+    pets: [pets[0]]
+  };
+  const state = petsReducer(pets, action);
+  expect(state).toEqual([pets[0]]);
+});
