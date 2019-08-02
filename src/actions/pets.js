@@ -14,10 +14,9 @@ export const startAddPet = (petData = {}) => {
       birthdate = moment(0).valueOf(),
       chip = "",
       place = "",
-      images = [],
       sex = ""
     } = petData;
-    const pet = { name, birthdate, chip, place, images, sex };
+    const pet = { name, birthdate, chip, place, sex };
     return database
       .ref("pets")
       .push(pet)
@@ -28,17 +27,41 @@ export const startAddPet = (petData = {}) => {
 };
 
 // REMOVE_PET
-export const removePet = id => ({
+export const removePet = ({ id } = {}) => ({
   type: "REMOVE_PET",
   id
 });
 
+export const startRemovePet = ({ id } = {}) => {
+  return dispatch => {
+    return database
+      .ref(`pets/${id}`)
+      .remove()
+      .then(() => {
+        dispatch(removePet({ id }));
+      });
+  };
+};
+
 // EDIT_PET
-export const editPet = (id, pet) => ({
-  type: "EDIT_PET",
-  id,
-  pet
-});
+export const editPet = (id, updates) => {
+  return {
+    type: "EDIT_PET",
+    id,
+    updates
+  };
+};
+
+export const startEditPet = (id, updates) => {
+  return dispatch => {
+    return database
+      .ref(`pets/${id}`)
+      .update(updates)
+      .then(() => {
+        dispatch(editPet(id, updates));
+      });
+  };
+};
 
 // SET_PET
 export const setPets = pets => ({

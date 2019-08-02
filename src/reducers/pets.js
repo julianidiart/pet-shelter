@@ -11,7 +11,7 @@ export default (state = petsReducerDefaultState, action) => {
         if (pet.id === action.id) {
           return {
             ...pet,
-            ...action.pet
+            ...action.updates
           };
         } else {
           return pet;

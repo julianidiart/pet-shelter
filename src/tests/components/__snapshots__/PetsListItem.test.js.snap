@@ -25,14 +25,6 @@ exports[`should render PetsListItem correctly 1`] = `
       Chip? 
       Yes, nº 123ABC123
     </p>
-    <h2>
-      Images
-    </h2>
-    <img
-      alt="Marla"
-      key="1"
-      src="https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg"
-    />
   </Link>
 </div>
 `;

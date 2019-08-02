@@ -11,7 +11,6 @@ export default class PetForm extends Component {
       birthdate: props.pet ? moment(props.pet.birthdate) : moment(),
       chip: props.pet ? props.pet.chip : "",
       place: props.pet ? props.pet.place : "",
-      images: props.pet ? props.pet.images : [],
       sex: props.pet ? props.pet.sex : "",
       calendarFocused: false,
       error: ""
@@ -44,7 +43,6 @@ export default class PetForm extends Component {
         birthdate: this.state.birthdate.valueOf(),
         chip: this.state.chip,
         place: this.state.place,
-        images: this.state.images,
         sex: this.state.sex
       });
     } else {

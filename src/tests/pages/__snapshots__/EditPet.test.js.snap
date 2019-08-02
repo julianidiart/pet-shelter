@@ -9,9 +9,6 @@ exports[`should render EditPetPage 1`] = `
         "birthdate": -63158400000,
         "chip": "123ABC123",
         "id": "1",
-        "images": Array [
-          "https://www.pet-art.net/images/pastel/labrador-retriever-jenson1.jpg",
-        ],
         "name": "Marla",
         "place": "Barchetta",
         "sex": "F",
