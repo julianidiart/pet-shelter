@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import AppRouter from "./routers/AppRouter";
+import AppRouter, { browserHistory } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { startSetPets } from "./actions/pets";
+import { login, logout } from "./actions/auth";
+import { firebase } from "./firebase";
 
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
@@ -20,10 +22,30 @@ const app = (
   </Provider>
 );
 
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(app, document.getElementById("root"));
+    hasRendered = true;
+  }
+};
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
 
-store.dispatch(startSetPets()).then(() => {
-  ReactDOM.render(app, document.getElementById("root"));
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.dispatch(login(user.uid));
+    store.dispatch(startSetPets()).then(() => {
+      renderApp();
+      if (browserHistory.location.pathname === "/") {
+        browserHistory.push("/pets");
+      }
+    });
+  } else {
+    store.dispatch(logout());
+    renderApp();
+    browserHistory.push("/");
+  }
 });
 
 // If you want your app to work offline and load faster, you can change

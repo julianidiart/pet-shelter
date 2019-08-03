@@ -16,5 +16,8 @@ exports[`should render Header correctly 1`] = `
   >
     Pets
   </NavLink>
+  <button>
+    Logout
+  </button>
 </header>
 `;
