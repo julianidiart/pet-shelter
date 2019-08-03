@@ -14,6 +14,8 @@ import {
 import pets from "../fixtures/pets";
 import database from "../../firebase";
 
+const uid = "testuid";
+const defaultAuthState = { auth: { uid } };
 const createMockStore = configureMockStore([thunk]);
 
 beforeEach(done => {
@@ -22,7 +24,7 @@ beforeEach(done => {
     petsData[id] = { name, birthdate, chip, place, sex };
   });
   database
-    .ref("pets")
+    .ref(`users/${uid}/pets`)
     .set(petsData)
     .then(() => done());
 });
@@ -36,7 +38,7 @@ test("should setup remove pet action object", () => {
 });
 
 test("should remove pet from firebase", done => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   const id = pets[0].id;
   store
     .dispatch(startRemovePet({ id }))
@@ -46,7 +48,7 @@ test("should remove pet from firebase", done => {
         type: "REMOVE_PET",
         id
       });
-      return database.ref(`pets/${id}`).once("value");
+      return database.ref(`users/${uid}/pets/${id}`).once("value");
     })
     .then(snapshot => {
       expect(snapshot.val()).toBeFalsy();
@@ -66,7 +68,7 @@ test("should setup edit pet action object", () => {
 });
 
 test("should edit pet from firebase", done => {
-  const store = createMockStore();
+  const store = createMockStore(defaultAuthState);
   const id = pets[0].id;
   const updates = { chip: "321CBA321" };
   store
@@ -78,7 +80,7 @@ test("should edit pet from firebase", done => {
         id,
         updates
       });
-      return database.ref(`pets/${id}`).once("value");
+      return database.ref(`users/${uid}/pets/${id}`).once("value");
     })
     .then(snapshot => {
       expect(snapshot.val().chip).toBe(updates.chip);
@@ -96,7 +98,7 @@ test("should setup add pet action object with provided values", () => {
 });
 
 test("should add pet to database and store", done => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   const petData = {
     name: "Pepito",
     birthdate: moment(0).valueOf(),
@@ -115,7 +117,9 @@ test("should add pet to database and store", done => {
           ...petData
         }
       });
-      return database.ref(`pets/${actions[0].pet.id}`).once("value");
+      return database
+        .ref(`users/${uid}/pets/${actions[0].pet.id}`)
+        .once("value");
     })
     .then(snapshot => {
       expect(snapshot.val()).toEqual(petData);
@@ -124,7 +128,7 @@ test("should add pet to database and store", done => {
 });
 
 test("should add pet with defaults to database and store", done => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   const petDefaultData = {
     name: "",
     birthdate: moment(0).valueOf(),
@@ -143,7 +147,9 @@ test("should add pet with defaults to database and store", done => {
           ...petDefaultData
         }
       });
-      return database.ref(`pets/${actions[0].pet.id}`).once("value");
+      return database
+        .ref(`users/${uid}/pets/${actions[0].pet.id}`)
+        .once("value");
     })
     .then(snapshot => {
       expect({ ...snapshot.val() }).toEqual(petDefaultData);
@@ -160,7 +166,7 @@ test("should setup set pets action object with data", () => {
 });
 
 test("should fetch the expenses from firebase", done => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   store.dispatch(startSetPets()).then(() => {
     const actions = store.getActions();
     expect(actions[0]).toEqual({

@@ -8,7 +8,8 @@ export const addPet = pet => ({
 });
 
 export const startAddPet = (petData = {}) => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       name = "",
       birthdate = moment(0).valueOf(),
@@ -18,7 +19,7 @@ export const startAddPet = (petData = {}) => {
     } = petData;
     const pet = { name, birthdate, chip, place, sex };
     return database
-      .ref("pets")
+      .ref(`users/${uid}/pets`)
       .push(pet)
       .then(ref => {
         dispatch(addPet({ id: ref.key, ...pet }));
@@ -33,9 +34,10 @@ export const removePet = ({ id } = {}) => ({
 });
 
 export const startRemovePet = ({ id } = {}) => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     return database
-      .ref(`pets/${id}`)
+      .ref(`users/${uid}/pets/${id}`)
       .remove()
       .then(() => {
         dispatch(removePet({ id }));
@@ -53,9 +55,10 @@ export const editPet = (id, updates) => {
 };
 
 export const startEditPet = (id, updates) => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     return database
-      .ref(`pets/${id}`)
+      .ref(`users/${uid}/pets/${id}`)
       .update(updates)
       .then(() => {
         dispatch(editPet(id, updates));
@@ -70,9 +73,10 @@ export const setPets = pets => ({
 });
 
 export const startSetPets = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     return database
-      .ref("pets")
+      .ref(`users/${uid}/pets`)
       .once("value")
       .then(snapshot => {
         const pets = [];
