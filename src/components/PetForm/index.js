@@ -18,9 +18,12 @@ export default class PetForm extends Component {
     };
   }
 
-  onNameChange = e => {
-    const name = e.target.value;
-    this.setState(() => ({ name }));
+  onInputChange = e => {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState(() => ({ [name]: value }));
   };
 
   onDateChange = birthdate => {
@@ -60,10 +63,11 @@ export default class PetForm extends Component {
         <form onSubmit={this.onSubmit}>
           <input
             autoFocus
-            onChange={this.onNameChange}
-            placeholder="Pet name"
+            onChange={this.onInputChange}
+            placeholder="Name"
             type="text"
             value={this.state.name}
+            name="name"
           />
           <SingleDatePicker
             date={this.state.birthdate}
@@ -73,6 +77,38 @@ export default class PetForm extends Component {
             numberOfMonths={1}
             isOutsideRange={() => false}
             displayFormat={() => "DD/MM/YYYY"}
+          />
+          <input
+            autoFocus
+            onChange={this.onInputChange}
+            placeholder="Sex"
+            type="text"
+            value={this.state.sex}
+            name="sex"
+          />
+          <input
+            autoFocus
+            onChange={this.onInputChange}
+            placeholder="Breed"
+            type="text"
+            value={this.state.breed}
+            name="breed"
+          />
+          <input
+            autoFocus
+            onChange={this.onInputChange}
+            placeholder="Chip"
+            type="text"
+            value={this.state.chip}
+            name="chip"
+          />
+          <input
+            autoFocus
+            onChange={this.onInputChange}
+            placeholder="Place"
+            type="text"
+            value={this.state.place}
+            name="place"
           />
           <button>Save Pet</button>
         </form>

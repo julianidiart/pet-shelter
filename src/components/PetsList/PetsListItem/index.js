@@ -11,7 +11,7 @@ export default ({ id, name, birthdate, chip, place, sex, breed }) => {
         <p>Sex: {sex}</p>
         <p>Breed: {breed}</p>
         <p>Place: {place}</p>
-        <p>Chip? {chip === "" ? "No" : "Yes, nº " + chip}</p>
+        <p>Chip: {chip === "" ? "-" : chip}</p>
       </Link>
     </div>
   );
