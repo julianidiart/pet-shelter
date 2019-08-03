@@ -15,9 +15,10 @@ export const startAddPet = (petData = {}) => {
       birthdate = moment(0).valueOf(),
       chip = "",
       place = "",
-      sex = ""
+      sex = "",
+      breed = ""
     } = petData;
-    const pet = { name, birthdate, chip, place, sex };
+    const pet = { name, birthdate, chip, place, sex, breed };
     return database
       .ref(`users/${uid}/pets`)
       .push(pet)

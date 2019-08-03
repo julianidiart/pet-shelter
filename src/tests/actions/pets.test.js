@@ -20,8 +20,8 @@ const createMockStore = configureMockStore([thunk]);
 
 beforeEach(done => {
   const petsData = {};
-  pets.forEach(({ id, name, birthdate, chip, place, sex }) => {
-    petsData[id] = { name, birthdate, chip, place, sex };
+  pets.forEach(({ id, name, birthdate, chip, place, sex, breed }) => {
+    petsData[id] = { name, birthdate, chip, place, sex, breed };
   });
   database
     .ref(`users/${uid}/pets`)
@@ -104,7 +104,8 @@ test("should add pet to database and store", done => {
     birthdate: moment(0).valueOf(),
     chip: "123BVS123",
     place: "Macelo",
-    sex: "M"
+    sex: "M",
+    breed: "Incrocio"
   };
   store
     .dispatch(startAddPet(petData))
@@ -134,7 +135,8 @@ test("should add pet with defaults to database and store", done => {
     birthdate: moment(0).valueOf(),
     chip: "",
     place: "",
-    sex: ""
+    sex: "",
+    breed: ""
   };
   store
     .dispatch(startAddPet({}))
@@ -165,7 +167,7 @@ test("should setup set pets action object with data", () => {
   });
 });
 
-test("should fetch the expenses from firebase", done => {
+test("should fetch the pets from firebase", done => {
   const store = createMockStore(defaultAuthState);
   store.dispatch(startSetPets()).then(() => {
     const actions = store.getActions();

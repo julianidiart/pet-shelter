@@ -12,6 +12,7 @@ export default class PetForm extends Component {
       chip: props.pet ? props.pet.chip : "",
       place: props.pet ? props.pet.place : "",
       sex: props.pet ? props.pet.sex : "",
+      breed: props.pet ? props.pet.breed : "",
       calendarFocused: false,
       error: ""
     };
@@ -43,7 +44,8 @@ export default class PetForm extends Component {
         birthdate: this.state.birthdate.valueOf(),
         chip: this.state.chip,
         place: this.state.place,
-        sex: this.state.sex
+        sex: this.state.sex,
+        breed: this.state.breed
       });
     } else {
       const error = "The pet should have a name!";

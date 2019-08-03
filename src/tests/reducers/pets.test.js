@@ -42,7 +42,7 @@ test("should edit a pet", () => {
   const action = {
     type: "EDIT_PET",
     id: pets[0].id,
-    pet: {
+    updates: {
       name
     }
   };

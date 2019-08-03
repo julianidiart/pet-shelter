@@ -9,6 +9,7 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Barchetta",
+    breed: "Incrocio",
     sex: "F"
   },
   {
@@ -19,6 +20,7 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Barchetta",
+    breed: "Incrocio",
     sex: "F"
   },
   {
@@ -29,6 +31,7 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Barchetta",
+    breed: "Incrocio",
     sex: "F"
   },
   {
@@ -39,6 +42,7 @@ export default [
       .valueOf(),
     chip: "",
     place: "Campagna",
+    breed: "Incrocio",
     sex: "F"
   },
   {
@@ -49,6 +53,7 @@ export default [
       .valueOf(),
     chip: "",
     place: "Barchetta",
+    breed: "Incrocio",
     sex: "F"
   },
   {
@@ -59,6 +64,7 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Macelo",
+    breed: "Incrocio",
     sex: "M"
   },
   {
@@ -69,6 +75,7 @@ export default [
       .valueOf(),
     chip: "",
     place: "Sasi",
+    breed: "Incrocio",
     sex: "M"
   },
   {
@@ -79,6 +86,7 @@ export default [
       .valueOf(),
     chip: "123ABC123",
     place: "Sasi",
+    breed: "Incrocio",
     sex: "M"
   },
   {
@@ -89,6 +97,7 @@ export default [
       .valueOf(),
     chip: "",
     place: "Macelo",
+    breed: "Incrocio",
     sex: "M"
   }
 ];

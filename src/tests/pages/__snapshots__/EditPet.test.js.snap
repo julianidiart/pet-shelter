@@ -7,6 +7,7 @@ exports[`should render EditPetPage 1`] = `
     pet={
       Object {
         "birthdate": -63158400000,
+        "breed": "Incrocio",
         "chip": "123ABC123",
         "id": "1",
         "name": "Marla",

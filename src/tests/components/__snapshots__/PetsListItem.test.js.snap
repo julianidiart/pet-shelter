@@ -10,12 +10,16 @@ exports[`should render PetsListItem correctly 1`] = `
       Marla
     </h3>
     <p>
+      Birthdate: 
+      01/01/1968
+    </p>
+    <p>
       Sex: 
       F
     </p>
     <p>
-      Birthdate: 
-      01/01/1968
+      Breed: 
+      Incrocio
     </p>
     <p>
       Place: 
