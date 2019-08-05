@@ -1,23 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Header correctly 1`] = `
-<header>
-  <h1>
-    Pet Shelter
-  </h1>
-  <NavLink
-    exact={true}
-    to="/"
+<header
+  className="header"
+>
+  <div
+    className="content-container"
   >
-    Home
-  </NavLink>
-  <NavLink
-    to="/pets"
-  >
-    Pets
-  </NavLink>
-  <button>
-    Logout
-  </button>
+    <div
+      className="header__content"
+    >
+      <Link
+        className="header__title"
+        to="/pets"
+      >
+        <h1>
+          Pet Shelter
+        </h1>
+      </Link>
+      <button>
+        Logout
+      </button>
+    </div>
+  </div>
 </header>
 `;

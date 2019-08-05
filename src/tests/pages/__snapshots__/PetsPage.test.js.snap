@@ -2,11 +2,7 @@
 
 exports[`should render PetsPage correctly 1`] = `
 <div>
-  <button
-    onClick={[Function]}
-  >
-    Add pet
-  </button>
+  <Connect(PetsSummary) />
   <Connect(PetsList) />
 </div>
 `;

@@ -1,6 +1,7 @@
 import React from "react";
-import PetsListItem from "./PetsListItem";
 import { connect } from "react-redux";
+import PetsListItem from "./PetsListItem";
+import selectPets from "../../selectors/pets";
 
 export const PetsList = ({ pets }) => (
   <div>
@@ -17,7 +18,7 @@ export const PetsList = ({ pets }) => (
 
 const mapStateToProps = state => {
   return {
-    pets: state.pets
+    pets: selectPets(state.pets, state.filters)
   };
 };
 
