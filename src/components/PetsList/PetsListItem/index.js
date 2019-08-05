@@ -1,18 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import moment from "moment";
 
-export default ({ id, name, birthdate, chip, place, sex, breed }) => {
+export default ({ id, name, place, sex }) => {
   return (
-    <div>
-      <Link to={`/pets/${id}`}>
-        <h3>Name: {name}</h3>
-        <p>Birthdate: {moment(birthdate).format("DD/MM/YYYY")}</p>
-        <p>Sex: {sex}</p>
-        <p>Breed: {breed}</p>
-        <p>Place: {place}</p>
-        <p>Chip: {chip === "" ? "-" : chip}</p>
-      </Link>
-    </div>
+    <Link className="list-item" to={`/pets/${id}`}>
+      <div>
+        <h3>{name + " (" + sex.toUpperCase() + ")"}</h3>
+      </div>
+      <div>
+        <h3>{place}</h3>
+      </div>
+    </Link>
   );
 };

@@ -1,5 +1,5 @@
 .button {
-  background: $purple;
+  background: $dark-purple;
   border: none;
   color: white;
   display: inline-block;
@@ -12,4 +12,9 @@
 
 .button--link {
   background: none;
+}
+
+.button--secondary {
+  color: $darkest-purple;
+  background: $green;
 }

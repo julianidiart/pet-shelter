@@ -1,0 +1,24 @@
+.DateRangePickerInput__withBorder,
+.SingleDatePickerInput__withBorder {
+  border: 1px solid $dark-purple !important;
+}
+
+.DateInput_input__focused {
+  border-bottom: 2px solid $dark-purple !important;
+}
+
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: $dark-purple !important;
+  border: $dark-purple !important;
+}
+
+.CalendarDay__selected_span {
+  background: $purple !important;
+  border: $purple !important;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight::before {
+  border-right: 33px solid $dark-purple !important;
+}

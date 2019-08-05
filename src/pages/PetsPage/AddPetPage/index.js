@@ -11,7 +11,14 @@ export class AddPetPage extends Component {
   render() {
     return (
       <div>
-        <PetForm onSubmit={this.onSubmit} />
+        <div className="page-header">
+          <div className="content-container">
+            <h1 className="page-header__title">Add Pet</h1>
+          </div>
+        </div>
+        <div className="content-container">
+          <PetForm onSubmit={this.onSubmit} />
+        </div>
       </div>
     );
   }

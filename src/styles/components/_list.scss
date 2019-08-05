@@ -1,0 +1,27 @@
+.list-header {
+  background: $purple;
+  border: 1px solid darken($purple, 7%);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size $m-size;
+}
+
+.list-item {
+  border: 1px solid darken($purple, 7%);
+  border-top: none;
+  color: $dark-purple;
+  display: flex;
+  flex-direction: column;
+  padding: $s-size;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  &:hover {
+    background: $yellow;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+  }
+}

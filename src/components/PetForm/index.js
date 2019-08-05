@@ -11,7 +11,7 @@ export default class PetForm extends Component {
       birthdate: props.pet ? moment(props.pet.birthdate) : moment(),
       chip: props.pet ? props.pet.chip : "",
       place: props.pet ? props.pet.place : "",
-      sex: props.pet ? props.pet.sex : "",
+      sex: props.pet ? props.pet.sex : "M",
       breed: props.pet ? props.pet.breed : "",
       calendarFocused: false,
       error: ""
@@ -57,18 +57,41 @@ export default class PetForm extends Component {
   };
 
   render() {
+    const duration = moment.duration(
+      moment().diff(moment(this.state.birthdate))
+    );
+    const years =
+      duration.years() > 0
+        ? duration.years() + " year" + (duration.years() > 1 ? "s " : " ")
+        : "";
+    const months =
+      duration.months() > 0
+        ? duration.months() + " month" + (duration.months() > 1 ? "s " : " ")
+        : "";
+    const days =
+      duration.days() > 0
+        ? duration.days() + " day" + (duration.days() > 1 ? "s" : "")
+        : "";
+    const age = years + months + days;
     return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
-          <input
-            autoFocus
-            onChange={this.onInputChange}
-            placeholder="Name"
-            type="text"
-            value={this.state.name}
-            name="name"
-          />
+      <form className="form" onSubmit={this.onSubmit}>
+        {this.state.error && <p className="form__error">{this.state.error}</p>}
+        <input
+          autoFocus
+          onChange={this.onInputChange}
+          placeholder="Name"
+          className="text-input"
+          type="text"
+          value={this.state.name}
+          name="name"
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}
+        >
           <SingleDatePicker
             date={this.state.birthdate}
             onDateChange={this.onDateChange}
@@ -78,41 +101,45 @@ export default class PetForm extends Component {
             isOutsideRange={() => false}
             displayFormat={() => "DD/MM/YYYY"}
           />
-          <input
-            autoFocus
-            onChange={this.onInputChange}
-            placeholder="Sex"
-            type="text"
-            value={this.state.sex}
-            name="sex"
-          />
-          <input
-            autoFocus
-            onChange={this.onInputChange}
-            placeholder="Breed"
-            type="text"
-            value={this.state.breed}
-            name="breed"
-          />
-          <input
-            autoFocus
-            onChange={this.onInputChange}
-            placeholder="Chip"
-            type="text"
-            value={this.state.chip}
-            name="chip"
-          />
-          <input
-            autoFocus
-            onChange={this.onInputChange}
-            placeholder="Place"
-            type="text"
-            value={this.state.place}
-            name="place"
-          />
-          <button>Save Pet</button>
-        </form>
-      </div>
+          {age.length > 0 ? <span>{age}</span> : null}
+        </div>
+        <select
+          className="select"
+          value={this.state.sex}
+          onChange={this.onInputChange}
+          name="sex"
+        >
+          <option value="m">Male</option>
+          <option value="f">Female</option>
+        </select>
+        <input
+          className="text-input"
+          onChange={this.onInputChange}
+          placeholder="Breed"
+          type="text"
+          value={this.state.breed}
+          name="breed"
+        />
+        <input
+          className="text-input"
+          onChange={this.onInputChange}
+          placeholder="Chip"
+          type="text"
+          value={this.state.chip}
+          name="chip"
+        />
+        <input
+          className="text-input"
+          onChange={this.onInputChange}
+          placeholder="Place"
+          type="text"
+          value={this.state.place}
+          name="place"
+        />
+        <div>
+          <button className="button">Save Pet</button>
+        </div>
+      </form>
     );
   }
 }
