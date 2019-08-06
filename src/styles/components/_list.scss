@@ -7,6 +7,13 @@
   padding: $s-size $m-size;
 }
 
+.list-body {
+  margin-bottom: $m-size;
+  @media (min-width: $desktop-breakpoint) {
+    margin-bottom: $l-size;
+  }
+}
+
 .list-item {
   border: 1px solid darken($purple, 7%);
   border-top: none;
@@ -20,8 +27,37 @@
     background: $yellow;
   }
   @media (min-width: $desktop-breakpoint) {
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
     padding: $m-size;
+  }
+}
+
+.list-item--message {
+  align-items: center;
+  color: $purple;
+  justify-content: center;
+  padding: $m-size;
+  &:hover {
+    background: none;
+  }
+}
+
+.list-item__title {
+  margin: 0;
+  word-break: break-all;
+}
+
+.list-item__sub-title {
+  color: $purple;
+  font-size: $font-size-small;
+}
+
+.list-item__place {
+  margin: $s-size 0 0 0;
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0;
+    padding-left: $s-size;
   }
 }

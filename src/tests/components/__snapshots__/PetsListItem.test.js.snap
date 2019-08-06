@@ -1,34 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render PetsListItem correctly 1`] = `
-<div>
-  <Link
-    to="/pets/1"
-  >
-    <h3>
-      Name: 
-      Marla
+<Link
+  className="list-item"
+  to="/pets/1"
+>
+  <div>
+    <h3
+      className="list-item__title"
+    >
+      Marla (F)
     </h3>
-    <p>
-      Birthdate: 
-      01/01/1968
-    </p>
-    <p>
-      Sex: 
-      F
-    </p>
-    <p>
-      Breed: 
+    <span
+      className="list-item__sub-title"
+    >
       Incrocio
-    </p>
-    <p>
-      Place: 
+    </span>
+  </div>
+  <div>
+    <h3
+      className="list-item__place"
+    >
       Barchetta
-    </p>
-    <p>
-      Chip? 
-      Yes, nº 123ABC123
-    </p>
-  </Link>
-</div>
+    </h3>
+  </div>
+</Link>
 `;

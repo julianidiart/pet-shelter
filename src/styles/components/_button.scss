@@ -1,7 +1,7 @@
 .button {
-  background: $dark-purple;
-  border: none;
-  color: white;
+  background: $green;
+  border: 1px solid $darkest-purple;
+  color: $darkest-purple;
   display: inline-block;
   font-size: $font-size-large;
   font-weight: 300;
@@ -12,9 +12,11 @@
 
 .button--link {
   background: none;
+  border: none;
+  color: white;
 }
 
 .button--secondary {
-  color: $darkest-purple;
-  background: $green;
+  background: $dark-purple;
+  color: white;
 }

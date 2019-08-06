@@ -10,14 +10,18 @@ export const PetsList = ({ pets }) => (
       <div className="show-for-desktop">Name</div>
       <div className="show-for-desktop">Place</div>
     </div>
-    {pets.length === 0 ? (
-      <p>Add a pet to start!</p>
-    ) : (
-      pets &&
-      pets.map(pet => {
-        return <PetsListItem key={pet.id} {...pet} />;
-      })
-    )}
+    <div className="list-body">
+      {pets.length === 0 ? (
+        <div className="list-item list-item--message">
+          <span>No pets!</span>
+        </div>
+      ) : (
+        pets &&
+        pets.map(pet => {
+          return <PetsListItem key={pet.id} {...pet} />;
+        })
+      )}
+    </div>
   </div>
 );
 

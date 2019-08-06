@@ -3,6 +3,7 @@
 exports[`should render PetsPage correctly 1`] = `
 <div>
   <Connect(PetsSummary) />
+  <Connect(PetsListFilters) />
   <Connect(PetsList) />
 </div>
 `;

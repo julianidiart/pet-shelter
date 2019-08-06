@@ -7,6 +7,8 @@ import { startSetPets } from "./actions/pets";
 import { login, logout } from "./actions/auth";
 import { firebase } from "./firebase";
 
+import Loading from "./components/Loading";
+
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/initialize";
@@ -30,7 +32,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("root"));
+ReactDOM.render(<Loading />, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
