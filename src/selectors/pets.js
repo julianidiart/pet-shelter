@@ -1,7 +1,5 @@
 import moment from "moment";
 
-// Get visible pets
-
 export default (pets, { text, sortBy, startDate, endDate }) => {
   return pets
     .filter(pet => {

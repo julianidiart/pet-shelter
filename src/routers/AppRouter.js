@@ -1,11 +1,12 @@
 import React from "react";
-import { Router, Switch } from "react-router-dom";
+import { Router, Switch, Redirect } from "react-router-dom";
 import * as history from "history";
 
 import LoginPage from "../pages/LoginPage";
 import PetsPage from "../pages/PetsPage";
 import AddPetPage from "../pages/PetsPage/AddPetPage";
 import EditPetPage from "../pages/PetsPage/EditPetPage";
+import VolunteersPage from "../pages/VolunteersPage";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
@@ -19,6 +20,8 @@ const AppRouter = () => (
         <PrivateRoute path="/add-pet" component={AddPetPage} />
         <PrivateRoute path="/pets/:id" component={EditPetPage} />
         <PrivateRoute path="/pets" component={PetsPage} />
+        <PrivateRoute path="/volunteers" component={VolunteersPage} />
+        <Redirect to="/" />
       </Switch>
     </div>
   </Router>
