@@ -85,13 +85,7 @@ export default class PetForm extends Component {
           value={this.state.name}
           name="name"
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
-          }}
-        >
+        <div className="input-group">
           <SingleDatePicker
             date={this.state.birthdate}
             onDateChange={this.onDateChange}
@@ -101,7 +95,7 @@ export default class PetForm extends Component {
             isOutsideRange={() => false}
             displayFormat={() => "DD/MM/YYYY"}
           />
-          {age.length > 0 ? <span>{age}</span> : null}
+          <span>{age.length > 0 ? <span>{age}</span> : null}</span>
         </div>
         <select
           className="select"

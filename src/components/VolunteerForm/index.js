@@ -88,13 +88,7 @@ export default class VolunteerForm extends Component {
           value={this.state.country}
           name="country"
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center"
-          }}
-        >
+        <div className="input-group">
           <SingleDatePicker
             date={this.state.arrivalDate}
             onDateChange={this.onArrivalDateChange}
