@@ -14,7 +14,9 @@ export default (pets, { text, sortBy, startDate, endDate }) => {
         pet.name.toLowerCase().includes(text.toLowerCase()) ||
         pet.place.toLowerCase().includes(text.toLowerCase()) ||
         pet.breed.toLowerCase().includes(text.toLowerCase()) ||
-        pet.color.toLowerCase().includes(text.toLowerCase()) ||
+        (pet.color
+          ? pet.color.toLowerCase().includes(text.toLowerCase())
+          : true) ||
         pet.chip
           .toString()
           .toLowerCase()
