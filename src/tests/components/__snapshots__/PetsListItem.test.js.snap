@@ -14,7 +14,7 @@ exports[`should render PetsListItem correctly 1`] = `
     <span
       className="list-item__sub-title"
     >
-      Incrocio
+      Incrocio Black and white (M)
     </span>
   </div>
   <div>

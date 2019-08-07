@@ -10,7 +10,10 @@ export default [
     chip: "123ABC123",
     place: "Barchetta",
     breed: "Incrocio",
-    sex: "F"
+    sex: "F",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "2",
@@ -21,7 +24,10 @@ export default [
     chip: "123ABC123",
     place: "Barchetta",
     breed: "Incrocio",
-    sex: "F"
+    sex: "F",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "3",
@@ -32,7 +38,10 @@ export default [
     chip: "123ABC123",
     place: "Barchetta",
     breed: "Incrocio",
-    sex: "F"
+    sex: "F",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "4",
@@ -43,7 +52,10 @@ export default [
     chip: "",
     place: "Campagna",
     breed: "Incrocio",
-    sex: "F"
+    sex: "F",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "5",
@@ -54,7 +66,10 @@ export default [
     chip: "",
     place: "Barchetta",
     breed: "Incrocio",
-    sex: "F"
+    sex: "F",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "6",
@@ -65,7 +80,10 @@ export default [
     chip: "123ABC123",
     place: "Macelo",
     breed: "Incrocio",
-    sex: "M"
+    sex: "M",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "7",
@@ -76,7 +94,10 @@ export default [
     chip: "",
     place: "Sasi",
     breed: "Incrocio",
-    sex: "M"
+    sex: "M",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "8",
@@ -87,7 +108,10 @@ export default [
     chip: "123ABC123",
     place: "Sasi",
     breed: "Incrocio",
-    sex: "M"
+    sex: "M",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   },
   {
     id: "9",
@@ -98,6 +122,9 @@ export default [
     chip: "",
     place: "Macelo",
     breed: "Incrocio",
-    sex: "M"
+    sex: "M",
+    sterilized: true,
+    size: "M",
+    color: "Black and white"
   }
 ];

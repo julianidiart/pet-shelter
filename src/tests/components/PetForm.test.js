@@ -44,7 +44,10 @@ test("should call onSubmit prop for valid form submission", () => {
     chip: pets[0].chip,
     place: pets[0].place,
     sex: pets[0].sex,
-    breed: pets[0].breed
+    breed: pets[0].breed,
+    sterilized: pets[0].sterilized,
+    size: pets[0].size,
+    color: pets[0].color
   });
 });
 

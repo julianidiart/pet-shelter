@@ -2,24 +2,45 @@
 
 exports[`should render EditPetPage 1`] = `
 <div>
-  <PetForm
-    onSubmit={[Function]}
-    pet={
-      Object {
-        "birthdate": -63158400000,
-        "breed": "Incrocio",
-        "chip": "123ABC123",
-        "id": "1",
-        "name": "Marla",
-        "place": "Barchetta",
-        "sex": "F",
-      }
-    }
-  />
-  <button
-    onClick={[Function]}
+  <div
+    className="page-header"
   >
-    Remove
-  </button>
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header__title"
+      >
+        Add Pet
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <PetForm
+      onSubmit={[Function]}
+      pet={
+        Object {
+          "birthdate": -63158400000,
+          "breed": "Incrocio",
+          "chip": "123ABC123",
+          "color": "Black and white",
+          "id": "1",
+          "name": "Marla",
+          "place": "Barchetta",
+          "sex": "F",
+          "size": "M",
+          "sterilized": true,
+        }
+      }
+    />
+    <button
+      className="button button--secondary"
+      onClick={[Function]}
+    >
+      Remove Pet
+    </button>
+  </div>
 </div>
 `;

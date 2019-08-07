@@ -13,7 +13,12 @@ export default (pets, { text, sortBy, startDate, endDate }) => {
       const textMatch =
         pet.name.toLowerCase().includes(text.toLowerCase()) ||
         pet.place.toLowerCase().includes(text.toLowerCase()) ||
-        pet.breed.toLowerCase().includes(text.toLowerCase());
+        pet.breed.toLowerCase().includes(text.toLowerCase()) ||
+        pet.color.toLowerCase().includes(text.toLowerCase()) ||
+        pet.chip
+          .toString()
+          .toLowerCase()
+          .includes(text.toLowerCase());
 
       return startDateMatch && endDateMatch && textMatch;
     })

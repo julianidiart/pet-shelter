@@ -20,9 +20,32 @@ const createMockStore = configureMockStore([thunk]);
 
 beforeEach(done => {
   const petsData = {};
-  pets.forEach(({ id, name, birthdate, chip, place, sex, breed }) => {
-    petsData[id] = { name, birthdate, chip, place, sex, breed };
-  });
+  pets.forEach(
+    ({
+      id,
+      name,
+      birthdate,
+      chip,
+      place,
+      sex,
+      breed,
+      sterilized,
+      size,
+      color
+    }) => {
+      petsData[id] = {
+        name,
+        birthdate,
+        chip,
+        place,
+        sex,
+        breed,
+        sterilized,
+        size,
+        color
+      };
+    }
+  );
   database
     .ref(`users/${uid}/pets`)
     .set(petsData)
@@ -105,7 +128,10 @@ test("should add pet to database and store", done => {
     chip: "123BVS123",
     place: "Macelo",
     sex: "M",
-    breed: "Incrocio"
+    breed: "Incrocio",
+    sterilized: true,
+    size: "M",
+    color: "White"
   };
   store
     .dispatch(startAddPet(petData))
@@ -136,7 +162,10 @@ test("should add pet with defaults to database and store", done => {
     chip: "",
     place: "",
     sex: "",
-    breed: ""
+    breed: "",
+    sterilized: false,
+    size: "",
+    color: ""
   };
   store
     .dispatch(startAddPet({}))

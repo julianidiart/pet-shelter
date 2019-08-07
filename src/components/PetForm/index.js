@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
+import Switch from "react-switch";
 
 export default class PetForm extends Component {
   constructor(props) {
@@ -11,8 +12,12 @@ export default class PetForm extends Component {
       birthdate: props.pet ? moment(props.pet.birthdate) : moment(),
       chip: props.pet ? props.pet.chip : "",
       place: props.pet ? props.pet.place : "",
-      sex: props.pet ? props.pet.sex : "M",
-      breed: props.pet ? props.pet.breed : "",
+      sex: props.pet ? props.pet.sex : "m",
+      breed: props.pet ? props.pet.breed : "Meticcio",
+      sterilized:
+        props.pet && props.pet.sterilized ? props.pet.sterilized : false,
+      color: props.pet && props.pet.color ? props.pet.color : "",
+      size: props.pet && props.pet.size ? props.pet.size : "s",
       calendarFocused: false,
       error: ""
     };
@@ -36,6 +41,10 @@ export default class PetForm extends Component {
     this.setState(() => ({ calendarFocused: focused }));
   };
 
+  onChangeSterilized = sterilized => {
+    this.setState(() => ({ sterilized }));
+  };
+
   onSubmit = e => {
     e.preventDefault();
 
@@ -48,7 +57,10 @@ export default class PetForm extends Component {
         chip: this.state.chip,
         place: this.state.place,
         sex: this.state.sex,
-        breed: this.state.breed
+        breed: this.state.breed,
+        sterilized: this.state.sterilized,
+        size: this.state.size,
+        color: this.state.color
       });
     } else {
       const error = "The pet should have a name!";
@@ -95,7 +107,14 @@ export default class PetForm extends Component {
             isOutsideRange={() => false}
             displayFormat={() => "DD/MM/YYYY"}
           />
-          <span>{age.length > 0 ? <span>{age}</span> : null}</span>
+          <span>{age.length > 0 ? <span>Age: {age}</span> : null}</span>
+          <label style={{ display: "flex", alignItems: "center" }}>
+            <span style={{ marginRight: "1.2rem" }}>Sterilized: </span>
+            <Switch
+              onChange={this.onChangeSterilized}
+              checked={this.state.sterilized}
+            />
+          </label>
         </div>
         <select
           className="select"
@@ -106,6 +125,16 @@ export default class PetForm extends Component {
           <option value="m">Male</option>
           <option value="f">Female</option>
         </select>
+        <select
+          className="select"
+          value={this.state.size}
+          onChange={this.onInputChange}
+          name="size"
+        >
+          <option value="s">Small</option>
+          <option value="m">Medium</option>
+          <option value="l">Large</option>
+        </select>
         <input
           className="text-input"
           onChange={this.onInputChange}
@@ -113,6 +142,14 @@ export default class PetForm extends Component {
           type="text"
           value={this.state.breed}
           name="breed"
+        />
+        <input
+          className="text-input"
+          onChange={this.onInputChange}
+          placeholder="Color"
+          type="text"
+          value={this.state.color}
+          name="color"
         />
         <input
           className="text-input"
