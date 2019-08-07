@@ -28,7 +28,7 @@ export default ({ id, name, place, sex, breed, sterilized, size, color }) => {
           )}
         </h3>
         <span className="list-item__sub-title">
-          {breed + " " + (color ? "( " + color + " )" : "")}
+          {breed + " " + (color ? "(" + color + ")" : "")}
         </span>
       </div>
       <div>
