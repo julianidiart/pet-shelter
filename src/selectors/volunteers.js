@@ -3,13 +3,13 @@ import moment from "moment";
 export default (volunteers, { text, sortBy, startDate, endDate }) => {
   return volunteers
     .filter(volunteer => {
-      const arrivalDateMoment = moment(volunteer.arriveDateMoment);
-      const depatureDateMoment = moment(volunteer.arriveDateMoment);
+      const arrivalDateMoment = moment(volunteer.arrivalDate);
+      const depatureDateMoment = moment(volunteer.depatureDate);
       const startDateMatch = startDate
-        ? startDate.isSameOrBefore(arrivalDateMoment, "day")
+        ? startDate.isSameOrAfter(arrivalDateMoment, "day")
         : true;
       const endDateMatch = endDate
-        ? endDate.isSameOrAfter(depatureDateMoment, "day")
+        ? endDate.isSameOrBefore(depatureDateMoment, "day")
         : true;
       const textMatch =
         volunteer.name.toLowerCase().includes(text.toLowerCase()) ||

@@ -1,10 +1,8 @@
-import moment from "moment";
-
 const filtersReducerDefaultState = {
   text: "",
   sortBy: "date",
-  startDate: moment().subtract(20, "years"),
-  endDate: moment()
+  startDate: null,
+  endDate: null
 };
 
 export default (state = filtersReducerDefaultState, action) => {

@@ -14,7 +14,7 @@ export const VolunteersSummary = ({ volunteersCount }) => {
             Viewing <span>{volunteersCount}</span> {volunteerWord}
           </h1>
           <div className="page-header__actions">
-            <Link className="button" to="/add-pet">
+            <Link className="button" to="/add-volunteer">
               Add Volunteer
             </Link>
           </div>

@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import AppRouter, { browserHistory } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { startSetPets } from "./actions/pets";
+import { startSetVolunteers } from "./actions/volunteers";
 import { login, logout } from "./actions/auth";
 import { firebase } from "./firebase";
 
@@ -38,10 +39,12 @@ firebase.auth().onAuthStateChanged(user => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetPets()).then(() => {
-      renderApp();
-      if (browserHistory.location.pathname === "/") {
-        browserHistory.push("/pets");
-      }
+      store.dispatch(startSetVolunteers()).then(() => {
+        renderApp();
+        if (browserHistory.location.pathname === "/") {
+          browserHistory.push("/pets");
+        }
+      });
     });
   } else {
     store.dispatch(logout());

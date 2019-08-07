@@ -51,7 +51,9 @@ export class PetsListFilters extends React.Component {
           </div> */}
           <div className="input-group__item">
             <DateRangePicker
+              startDateId="startDate"
               startDate={this.props.filters.startDate}
+              endDateId="endDate"
               endDate={this.props.filters.endDate}
               onDatesChange={this.onDatesChange}
               focusedInput={this.state.calendarFocused}
@@ -59,6 +61,7 @@ export class PetsListFilters extends React.Component {
               showClearDates={true}
               numberOfMonths={1}
               isOutsideRange={() => false}
+              displayFormat="DD/MM/YYYY"
             />
           </div>
         </div>

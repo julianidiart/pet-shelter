@@ -54,6 +54,11 @@
   font-size: $font-size-small;
 }
 
+.list-item__sub-title-right {
+  @extend .list-item__sub-title;
+  float: right;
+}
+
 .list-item__place {
   margin: $s-size 0 0 0;
   @media (min-width: $desktop-breakpoint) {
