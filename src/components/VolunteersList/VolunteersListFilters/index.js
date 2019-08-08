@@ -47,10 +47,14 @@ export class VolunteersListFilters extends React.Component {
     let calendarDayClass = "react-calendar__month-view__days__day--";
     if (volunteersCount === 0) {
       calendarDayClass += "empty";
-    } else if (volunteersCount === 1 || volunteersCount === 2) {
+    } else if (volunteersCount === 1) {
       calendarDayClass += "some";
-    } else {
+    } else if (volunteersCount === 2) {
+      calendarDayClass += "some-dark";
+    } else if (volunteersCount === 3) {
       calendarDayClass += "full";
+    } else {
+      calendarDayClass += "full-dark";
     }
     return view === "month" ? calendarDayClass : null;
   };

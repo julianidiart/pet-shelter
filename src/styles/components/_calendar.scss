@@ -24,13 +24,8 @@
   background: $green !important;
   color: $purple;
 
+  &:hover,
   &.react-calendar__tile--active {
-    background: white !important;
-    border: 1px solid $green;
-    color: $dark-purple;
-  }
-
-  &:hover {
     background: white !important;
     border: 1px solid $green;
     color: $dark-purple;
@@ -42,32 +37,33 @@
   border: 1px solid $yellow !important;
   color: $purple;
 
+  &:hover,
   &.react-calendar__tile--active {
     background: white !important;
-    border: 1px solid $yellow;
     color: $dark-purple;
   }
+}
 
-  &:hover {
-    background: white !important;
-    border: 1px solid $yellow;
-    color: $dark-purple;
-  }
+.react-calendar__month-view__days__day--some-dark {
+  @extend .react-calendar__month-view__days__day--some;
+  background: darken($yellow, 7%) !important;
+  border: 1px solid darken($yellow, 7%) !important;
 }
 
 .react-calendar__month-view__days__day--full {
   background: $dark-purple !important;
   border: 1px solid $dark-purple !important;
 
+  &:hover,
   &.react-calendar__tile--active {
     background: white !important;
     border: 1px solid $dark-purple;
     color: $dark-purple;
   }
+}
 
-  &:hover {
-    background: white !important;
-    border: 1px solid $dark-purple;
-    color: $dark-purple;
-  }
+.react-calendar__month-view__days__day--full-dark {
+  @extend .react-calendar__month-view__days__day--full;
+  background: darken($dark-purple, 7%) !important;
+  border: 1px solid darken($dark-purple, 7%) !important;
 }
