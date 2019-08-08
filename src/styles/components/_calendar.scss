@@ -1,0 +1,73 @@
+.react-calendar {
+  background: $purple;
+  border: 1px solid $purple;
+  color: white;
+  margin-bottom: $l-size;
+  width: 100%;
+}
+
+.react-calendar__navigation__arrow,
+.react-calendar__navigation__label {
+  color: white;
+
+  &:hover {
+    background: $yellow !important;
+    color: $purple;
+  }
+}
+
+.react-calendar__month-view__days__day {
+  color: white;
+}
+
+.react-calendar__month-view__days__day--empty {
+  background: $green !important;
+  color: $purple;
+
+  &.react-calendar__tile--active {
+    background: white !important;
+    border: 1px solid $green;
+    color: $dark-purple;
+  }
+
+  &:hover {
+    background: white !important;
+    border: 1px solid $green;
+    color: $dark-purple;
+  }
+}
+
+.react-calendar__month-view__days__day--some {
+  background: $yellow !important;
+  border: 1px solid $yellow !important;
+  color: $purple;
+
+  &.react-calendar__tile--active {
+    background: white !important;
+    border: 1px solid $yellow;
+    color: $dark-purple;
+  }
+
+  &:hover {
+    background: white !important;
+    border: 1px solid $yellow;
+    color: $dark-purple;
+  }
+}
+
+.react-calendar__month-view__days__day--full {
+  background: $dark-purple !important;
+  border: 1px solid $dark-purple !important;
+
+  &.react-calendar__tile--active {
+    background: white !important;
+    border: 1px solid $dark-purple;
+    color: $dark-purple;
+  }
+
+  &:hover {
+    background: white !important;
+    border: 1px solid $dark-purple;
+    color: $dark-purple;
+  }
+}

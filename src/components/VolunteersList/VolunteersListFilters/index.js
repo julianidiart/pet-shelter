@@ -1,84 +1,90 @@
 import React from "react";
 import { connect } from "react-redux";
-import { DateRangePicker } from "react-dates";
-import {
-  setTextFilter,
-  sortByDate,
-  setStartDate,
-  setEndDate
-} from "../../../actions/filters";
+import Calendar from "react-calendar";
+import moment from "moment";
+import { setTextFilter, setCalendarDate } from "../../../actions/filters";
 
 export class VolunteersListFilters extends React.Component {
   state = {
     calendarFocused: null
   };
-  onDatesChange = ({ startDate, endDate }) => {
-    this.props.setStartDate(startDate);
-    this.props.setEndDate(endDate);
-  };
-  onFocusChange = calendarFocused => {
-    this.setState(() => ({ calendarFocused }));
-  };
   onTextChange = e => {
     this.props.setTextFilter(e.target.value);
   };
-  onSortChange = e => {
-    if (e.target.value === "date") {
-      this.props.sortByDate();
+  onClickDay = value => {
+    const calendarDate = moment(value).isSame(
+      this.props.filters.calendarDate,
+      "day"
+    )
+      ? null
+      : value;
+    this.props.setCalendarDate(calendarDate);
+  };
+  tileContent = ({ date, view }) => {
+    const calendarDate = moment(date);
+    const volunteersCount = this.props.volunteers.filter(volunteer => {
+      const { arrivalDate, depatureDate } = volunteer;
+      return calendarDate.isBetween(
+        moment(arrivalDate),
+        moment(depatureDate),
+        "day",
+        "[]"
+      );
+    }).length;
+    return view === "month" ? " (" + volunteersCount + ")" : null;
+  };
+  tileClassName = ({ date, view }) => {
+    const calendarDate = moment(date);
+    const volunteersCount = this.props.volunteers.filter(volunteer => {
+      const { arrivalDate, depatureDate } = volunteer;
+      return calendarDate.isBetween(
+        moment(arrivalDate),
+        moment(depatureDate),
+        "day",
+        "[]"
+      );
+    }).length;
+    let calendarDayClass = "react-calendar__month-view__days__day--";
+    if (volunteersCount === 0) {
+      calendarDayClass += "empty";
+    } else if (volunteersCount === 1 || volunteersCount === 2) {
+      calendarDayClass += "some";
+    } else {
+      calendarDayClass += "full";
     }
+    return view === "month" ? calendarDayClass : null;
   };
   render() {
     return (
       <div className="content-container">
-        <div className="input-group">
-          <div className="input-group__item">
-            <input
-              type="text"
-              className="text-input"
-              placeholder="Search volunteers..."
-              value={this.props.filters.text}
-              onChange={this.onTextChange}
-            />
-          </div>
-          {/* <div className="input-group__item">
-            <select
-              className="select"
-              value={this.props.filters.sortBy}
-              onChange={this.onSortChange}
-            >
-              <option value="date">Date</option>
-            </select>
-          </div> */}
-          <div className="input-group__item">
-            <DateRangePicker
-              startDateId="startDate"
-              startDate={this.props.filters.startDate}
-              endDateId="endDate"
-              endDate={this.props.filters.endDate}
-              onDatesChange={this.onDatesChange}
-              focusedInput={this.state.calendarFocused}
-              onFocusChange={this.onFocusChange}
-              showClearDates={true}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-              displayFormat="DD/MM/YYYY"
-            />
-          </div>
+        <div className="input-group__item">
+          <input
+            type="text"
+            className="text-input"
+            placeholder="Search volunteers..."
+            value={this.props.filters.text}
+            onChange={this.onTextChange}
+          />
         </div>
+        <Calendar
+          tileContent={this.tileContent}
+          tileClassName={this.tileClassName}
+          onClickDay={this.onClickDay}
+          value={this.props.filters.calendarDate}
+        />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  volunteers: state.volunteers,
   filters: state.filters
 });
 
 const mapDispatchToProps = dispatch => ({
   setTextFilter: text => dispatch(setTextFilter(text)),
-  sortByDate: () => dispatch(sortByDate()),
-  setStartDate: startDate => dispatch(setStartDate(startDate)),
-  setEndDate: endDate => dispatch(setEndDate(endDate))
+  setCalendarDate: calendarDate => dispatch(setCalendarDate(calendarDate))
 });
 
 export default connect(

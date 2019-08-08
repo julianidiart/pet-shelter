@@ -20,3 +20,9 @@ export const setEndDate = endDate => ({
   type: "SET_END_DATE",
   endDate
 });
+
+// SET_CALENDAR_DATE
+export const setCalendarDate = calendarDate => ({
+  type: "SET_CALENDAR_DATE",
+  calendarDate
+});

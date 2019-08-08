@@ -2,7 +2,8 @@ const filtersReducerDefaultState = {
   text: "",
   sortBy: "date",
   startDate: null,
-  endDate: null
+  endDate: null,
+  calendarDate: null
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -26,6 +27,11 @@ export default (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         endDate: action.endDate
+      };
+    case "SET_CALENDAR_DATE":
+      return {
+        ...state,
+        calendarDate: action.calendarDate
       };
     default:
       return state;
