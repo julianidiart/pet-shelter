@@ -75,6 +75,8 @@ export class VolunteersListFilters extends React.Component {
           tileClassName={this.tileClassName}
           onClickDay={this.onClickDay}
           value={this.props.filters.calendarDate}
+          maxDetail="month"
+          minDetail="year"
         />
       </div>
     );

@@ -16,6 +16,11 @@
   }
 }
 
+.react-calendar__navigation button[disabled] {
+  color: white !important;
+  background: $purple !important;
+}
+
 .react-calendar__month-view__days__day {
   color: white;
 }
@@ -66,4 +71,14 @@
   @extend .react-calendar__month-view__days__day--full;
   background: darken($dark-purple, 7%) !important;
   border: 1px solid darken($dark-purple, 7%) !important;
+}
+
+.react-calendar__year-view__months__month {
+  color: white !important;
+
+  &.react-calendar__tile:enabled:hover,
+  &.react-calendar__tile:enabled:focus {
+    background: $yellow !important;
+    color: $purple !important;
+  }
 }
