@@ -2,22 +2,31 @@ import React, { Component } from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
 import Switch from "react-switch";
+import FileUploader from "react-firebase-file-uploader";
+import { imageStorage } from "../../firebase";
+
+import Loading from "../Loading";
 
 export default class PetForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: props.pet ? props.pet.name : "",
-      birthdate: props.pet ? moment(props.pet.birthdate) : moment(),
-      chip: props.pet ? props.pet.chip : "",
-      place: props.pet ? props.pet.place : "",
-      sex: props.pet ? props.pet.sex : "m",
-      breed: props.pet ? props.pet.breed : "Meticcio",
+      name: props.pet && props.pet.name ? props.pet.name : "",
+      birthdate:
+        props.pet && props.pet.birthdate
+          ? moment(props.pet.birthdate)
+          : moment(),
+      chip: props.pet && props.pet.chip ? props.pet.chip : "",
+      place: props.pet && props.pet.place ? props.pet.place : "",
+      sex: props.pet && props.pet.sex ? props.pet.sex : "m",
+      breed: props.pet && props.pet.breed ? props.pet.breed : "Meticcio",
       sterilized:
         props.pet && props.pet.sterilized ? props.pet.sterilized : false,
       color: props.pet && props.pet.color ? props.pet.color : "",
       size: props.pet && props.pet.size ? props.pet.size : "s",
+      avatarURL: props.pet && props.pet.avatarURL ? props.pet.avatarURL : "",
+      avatarIsUploading: false,
       calendarFocused: false,
       error: ""
     };
@@ -45,6 +54,13 @@ export default class PetForm extends Component {
     this.setState(() => ({ sterilized }));
   };
 
+  handleUploadSuccess = filename => {
+    imageStorage
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({ avatarURL: url, avatarIsUploading: false }));
+  };
+
   onSubmit = e => {
     e.preventDefault();
 
@@ -60,7 +76,8 @@ export default class PetForm extends Component {
         breed: this.state.breed,
         sterilized: this.state.sterilized,
         size: this.state.size,
-        color: this.state.color
+        color: this.state.color,
+        avatarURL: this.state.avatarURL
       });
     } else {
       const error = "The pet should have a name!";
@@ -88,85 +105,135 @@ export default class PetForm extends Component {
     return (
       <form className="form" onSubmit={this.onSubmit}>
         {this.state.error && <p className="form__error">{this.state.error}</p>}
-        <input
-          autoFocus
-          onChange={this.onInputChange}
-          placeholder="Name"
-          className="text-input"
-          type="text"
-          value={this.state.name}
-          name="name"
-        />
-        <div className="input-group">
-          <SingleDatePicker
-            date={this.state.birthdate}
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-            displayFormat={() => "DD/MM/YYYY"}
-          />
-          <span>{age.length > 0 ? <span>Age: {age}</span> : null}</span>
-          <label style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ marginRight: "1.2rem" }}>Sterilized: </span>
-            <Switch
-              onChange={this.onChangeSterilized}
-              checked={this.state.sterilized}
-            />
-          </label>
+        <div className="form__divided">
+          <div className="form__image-container">
+            {this.state.avatarURL ? (
+              <img
+                className="input-group__image"
+                src={this.state.avatarURL}
+                alt={this.state.name + " avatar image"}
+              />
+            ) : this.state.avatarIsUploading ? (
+              <Loading />
+            ) : (
+              <span>No image selected!</span>
+            )}
+          </div>
+          <div>
+            <div className="input-group__item">
+              <FileUploader
+                accept="image/*"
+                name="avatarURL"
+                randomizeFilename
+                storageRef={imageStorage}
+                onUploadStart={() => this.setState({ avatarIsUploading: true })}
+                onUploadError={error => {
+                  this.setState({ avatarIsUploading: false, error });
+                }}
+                onUploadSuccess={this.handleUploadSuccess}
+              />
+            </div>
+            <div className="input-group__item">
+              <input
+                autoFocus
+                onChange={this.onInputChange}
+                placeholder="Name"
+                className="text-input"
+                type="text"
+                value={this.state.name}
+                name="name"
+              />
+            </div>
+            <div className="input-group__item">
+              <SingleDatePicker
+                date={this.state.birthdate}
+                onDateChange={this.onDateChange}
+                focused={this.state.calendarFocused}
+                onFocusChange={this.onFocusChange}
+                numberOfMonths={1}
+                isOutsideRange={() => false}
+                displayFormat={() => "DD/MM/YYYY"}
+              />
+            </div>
+            {age.length > 0 ? (
+              <div className="input-group__item">
+                <span>Age: {age}</span>
+              </div>
+            ) : null}
+            <div className="input-group__item">
+              <select
+                className="select"
+                value={this.state.sex}
+                onChange={this.onInputChange}
+                name="sex"
+              >
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+              </select>
+            </div>
+            <div className="input-group__item">
+              <select
+                className="select"
+                value={this.state.size}
+                onChange={this.onInputChange}
+                name="size"
+              >
+                <option value="s">Small</option>
+                <option value="m">Medium</option>
+                <option value="l">Large</option>
+              </select>
+            </div>
+            <div className="input-group__item">
+              <input
+                className="text-input"
+                onChange={this.onInputChange}
+                placeholder="Breed"
+                type="text"
+                value={this.state.breed}
+                name="breed"
+              />
+            </div>
+            <div className="input-group__item">
+              <input
+                className="text-input"
+                onChange={this.onInputChange}
+                placeholder="Color"
+                type="text"
+                value={this.state.color}
+                name="color"
+              />
+            </div>
+            <div className="input-group__item">
+              <input
+                className="text-input"
+                onChange={this.onInputChange}
+                placeholder="Chip"
+                type="text"
+                value={this.state.chip}
+                name="chip"
+              />
+            </div>
+            <div className="input-group__item">
+              <input
+                className="text-input"
+                onChange={this.onInputChange}
+                placeholder="Place"
+                type="text"
+                value={this.state.place}
+                name="place"
+              />
+            </div>
+            <div className="input-group__item">
+              <label style={{ display: "flex", alignItems: "center" }}>
+                <span style={{ marginRight: "1.2rem" }}>Sterilized: </span>
+                <Switch
+                  onChange={this.onChangeSterilized}
+                  checked={this.state.sterilized}
+                />
+              </label>
+            </div>
+          </div>
         </div>
-        <select
-          className="select"
-          value={this.state.sex}
-          onChange={this.onInputChange}
-          name="sex"
-        >
-          <option value="m">Male</option>
-          <option value="f">Female</option>
-        </select>
-        <select
-          className="select"
-          value={this.state.size}
-          onChange={this.onInputChange}
-          name="size"
-        >
-          <option value="s">Small</option>
-          <option value="m">Medium</option>
-          <option value="l">Large</option>
-        </select>
-        <input
-          className="text-input"
-          onChange={this.onInputChange}
-          placeholder="Breed"
-          type="text"
-          value={this.state.breed}
-          name="breed"
-        />
-        <input
-          className="text-input"
-          onChange={this.onInputChange}
-          placeholder="Color"
-          type="text"
-          value={this.state.color}
-          name="color"
-        />
-        <input
-          className="text-input"
-          onChange={this.onInputChange}
-          placeholder="Chip"
-          type="text"
-          value={this.state.chip}
-          name="chip"
-        />
-        <input
-          className="text-input"
-          onChange={this.onInputChange}
-          placeholder="Place"
-          type="text"
-          value={this.state.place}
-          name="place"
-        />
         <div>
           <button className="button">Save Pet</button>
         </div>

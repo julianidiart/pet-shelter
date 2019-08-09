@@ -64,6 +64,7 @@ exports[`should render PetsList with pets 1`] = `
     className="list-body"
   >
     <_default
+      avatarURL=""
       birthdate={-63158400000}
       breed="Incrocio"
       chip="123ABC123"
@@ -77,6 +78,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-47437200000}
       breed="Incrocio"
       chip="123ABC123"
@@ -90,6 +92,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-15901200000}
       breed="Incrocio"
       chip="123ABC123"
@@ -103,6 +106,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-110595600000}
       breed="Incrocio"
       chip=""
@@ -116,6 +120,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-347155200000}
       breed="Incrocio"
       chip=""
@@ -129,6 +134,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-252460800000}
       breed="Incrocio"
       chip="123ABC123"
@@ -142,6 +148,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-283996800000}
       breed="Incrocio"
       chip=""
@@ -155,6 +162,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-126230400000}
       breed="Incrocio"
       chip="123ABC123"
@@ -168,6 +176,7 @@ exports[`should render PetsList with pets 1`] = `
       sterilized={true}
     />
     <_default
+      avatarURL=""
       birthdate={-157766400000}
       breed="Incrocio"
       chip=""

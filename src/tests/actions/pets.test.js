@@ -31,7 +31,8 @@ beforeEach(done => {
       breed,
       sterilized,
       size,
-      color
+      color,
+      avatarURL
     }) => {
       petsData[id] = {
         name,
@@ -42,7 +43,8 @@ beforeEach(done => {
         breed,
         sterilized,
         size,
-        color
+        color,
+        avatarURL
       };
     }
   );
@@ -131,7 +133,8 @@ test("should add pet to database and store", done => {
     breed: "Incrocio",
     sterilized: true,
     size: "M",
-    color: "White"
+    color: "White",
+    avatarURL: ""
   };
   store
     .dispatch(startAddPet(petData))
@@ -165,7 +168,8 @@ test("should add pet with defaults to database and store", done => {
     breed: "",
     sterilized: false,
     size: "",
-    color: ""
+    color: "",
+    avatarURL: ""
   };
   store
     .dispatch(startAddPet({}))

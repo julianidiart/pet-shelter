@@ -19,7 +19,8 @@ export const startAddPet = (petData = {}) => {
       breed = "",
       sterilized = false,
       size = "",
-      color = ""
+      color = "",
+      avatarURL = ""
     } = petData;
     const pet = {
       name,
@@ -30,7 +31,8 @@ export const startAddPet = (petData = {}) => {
       breed,
       sterilized,
       size,
-      color
+      color,
+      avatarURL
     };
     return database
       .ref(`users/${uid}/pets`)

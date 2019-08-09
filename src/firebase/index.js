@@ -1,4 +1,6 @@
 import * as firebase from "firebase";
+import "firebase/app";
+import "firebase/storage";
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -13,6 +15,7 @@ const config = {
 firebase.initializeApp(config);
 
 const database = firebase.database();
+const imageStorage = firebase.storage().ref("images");
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, googleAuthProvider, database as default };
+export { firebase, googleAuthProvider, database as default, imageStorage };

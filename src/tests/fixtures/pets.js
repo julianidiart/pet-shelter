@@ -13,7 +13,8 @@ export default [
     sex: "F",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "2",
@@ -27,7 +28,8 @@ export default [
     sex: "F",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "3",
@@ -41,7 +43,8 @@ export default [
     sex: "F",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "4",
@@ -55,7 +58,8 @@ export default [
     sex: "F",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "5",
@@ -69,7 +73,8 @@ export default [
     sex: "F",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "6",
@@ -83,7 +88,8 @@ export default [
     sex: "M",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "7",
@@ -97,7 +103,8 @@ export default [
     sex: "M",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "8",
@@ -111,7 +118,8 @@ export default [
     sex: "M",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   },
   {
     id: "9",
@@ -125,6 +133,7 @@ export default [
     sex: "M",
     sterilized: true,
     size: "M",
-    color: "Black and white"
+    color: "Black and white",
+    avatarURL: ""
   }
 ];

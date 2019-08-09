@@ -5,6 +5,7 @@ import { startAddPet } from "../../../actions/pets";
 
 export class AddPetPage extends Component {
   onSubmit = pet => {
+    console.log(pet);
     this.props.startAddPet(pet);
     this.props.history.push("/pets");
   };
