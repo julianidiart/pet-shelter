@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import VolunteersListItem from "./VolunteersListItem";
-import selectVolunteers from "../../selectors/volunteers";
+import { selectVolunteers } from "../../selectors/volunteers";
 
 export const VolunteersList = ({ volunteers }) => (
   <div className="content-container">

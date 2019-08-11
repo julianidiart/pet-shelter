@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export default (volunteers, { text, calendarDate }) => {
+export const selectVolunteers = (volunteers, { text, calendarDate }) => {
   return volunteers
     .filter(volunteer => {
       const arrivalDateMoment = moment(volunteer.arrivalDate);
@@ -22,4 +22,22 @@ export default (volunteers, { text, calendarDate }) => {
     .sort((a, b) => {
       return a.arrivalDate > b.arrivalDate ? 1 : -1;
     });
+};
+
+export const nextVolunteerToArrive = volunteers => {
+  const now = moment();
+  let closestDate = null;
+  let nextVolunteer = null;
+  volunteers.forEach(volunteer => {
+    const arrivalDateMoment = moment(volunteer.arrivalDate);
+    if (arrivalDateMoment.isSameOrAfter(now)) {
+      if (!nextVolunteer) nextVolunteer = volunteer;
+      if (!closestDate) closestDate = volunteer.arrivalDate;
+      if (arrivalDateMoment.isSameOrBefore(moment(closestDate))) {
+        closestDate = volunteer.arrivalDate;
+        nextVolunteer = volunteer;
+      }
+    }
+  });
+  return nextVolunteer;
 };

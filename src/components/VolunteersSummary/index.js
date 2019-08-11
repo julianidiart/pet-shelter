@@ -1,9 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import selectVolunteers from "../../selectors/volunteers";
+import moment from "moment";
+import {
+  selectVolunteers,
+  nextVolunteerToArrive
+} from "../../selectors/volunteers";
 
-export const VolunteersSummary = ({ volunteersCount }) => {
+export const VolunteersSummary = ({ volunteersCount, nextVolunteer }) => {
   const volunteerWord = volunteersCount === 1 ? "volunteer" : "volunteers";
 
   return (
@@ -19,16 +23,31 @@ export const VolunteersSummary = ({ volunteersCount }) => {
             </Link>
           </div>
         </div>
+        {nextVolunteer ? (
+          <p className="page-header__title">
+            <i>Next to arrive: </i>
+            {nextVolunteer.name +
+              " (" +
+              moment(nextVolunteer.arrivalDate).format("DD/MM/YYYY") +
+              ")"}
+          </p>
+        ) : (
+          <p className="page-header__title">
+            <i>No volunteers arriving soon!</i>
+          </p>
+        )}
       </div>
     </div>
   );
 };
 
 const mapStateToProps = state => {
-  const visiblePets = selectVolunteers(state.volunteers, state.filters);
+  const visibleVolunteers = selectVolunteers(state.volunteers, state.filters);
+  const nextVolunteer = nextVolunteerToArrive(state.volunteers);
 
   return {
-    volunteersCount: visiblePets.length
+    volunteersCount: visibleVolunteers.length,
+    nextVolunteer: nextVolunteer
   };
 };
 
