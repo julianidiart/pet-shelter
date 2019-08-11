@@ -14,7 +14,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "2",
@@ -29,7 +32,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "3",
@@ -44,7 +50,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "4",
@@ -59,7 +68,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "5",
@@ -74,7 +86,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "6",
@@ -89,7 +104,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "7",
@@ -104,7 +122,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "8",
@@ -119,7 +140,10 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   },
   {
     id: "9",
@@ -134,6 +158,9 @@ export default [
     sterilized: true,
     size: "M",
     color: "Black and white",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Test pet!"
   }
 ];

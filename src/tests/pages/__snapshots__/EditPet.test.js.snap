@@ -22,13 +22,16 @@ exports[`should render EditPetPage 1`] = `
       onSubmit={[Function]}
       pet={
         Object {
+          "adopted": false,
           "avatarURL": "",
           "birthdate": -63158400000,
           "breed": "Incrocio",
           "chip": "123ABC123",
           "color": "Black and white",
+          "comments": "Test pet!",
           "id": "1",
           "name": "Marla",
+          "passedAway": false,
           "place": "Barchetta",
           "sex": "F",
           "size": "M",

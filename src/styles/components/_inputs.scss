@@ -7,6 +7,11 @@
   width: 100%;
 }
 
+.textarea-input {
+  @extend .text-input;
+  height: auto;
+}
+
 .select {
   @extend .text-input;
 }

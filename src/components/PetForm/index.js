@@ -26,6 +26,10 @@ export default class PetForm extends Component {
       color: props.pet && props.pet.color ? props.pet.color : "",
       size: props.pet && props.pet.size ? props.pet.size : "s",
       avatarURL: props.pet && props.pet.avatarURL ? props.pet.avatarURL : "",
+      adopted: props.pet && props.pet.adopted ? props.pet.adopted : false,
+      passedAway:
+        props.pet && props.pet.passedAway ? props.pet.passedAway : false,
+      comments: props.pet && props.pet.comments ? props.pet.comments : "",
       avatarIsUploading: false,
       calendarFocused: false,
       error: ""
@@ -54,6 +58,14 @@ export default class PetForm extends Component {
     this.setState(() => ({ sterilized }));
   };
 
+  onChangeAdopted = adopted => {
+    this.setState(() => ({ adopted }));
+  };
+
+  onChangePassedAway = passedAway => {
+    this.setState(() => ({ passedAway }));
+  };
+
   handleUploadSuccess = filename => {
     imageStorage
       .child(filename)
@@ -77,7 +89,10 @@ export default class PetForm extends Component {
         sterilized: this.state.sterilized,
         size: this.state.size,
         color: this.state.color,
-        avatarURL: this.state.avatarURL
+        avatarURL: this.state.avatarURL,
+        adopted: this.state.adopted,
+        passedAway: this.state.passedAway,
+        comments: this.state.comments
       });
     } else {
       const error = "The pet should have a name!";
@@ -232,7 +247,36 @@ export default class PetForm extends Component {
                 />
               </label>
             </div>
+            <div className="input-group__item">
+              <label style={{ display: "flex", alignItems: "center" }}>
+                <span style={{ marginRight: "1.2rem" }}>Adopted: </span>
+                <Switch
+                  onChange={this.onChangeAdopted}
+                  checked={this.state.adopted}
+                />
+              </label>
+            </div>
+            <div className="input-group__item">
+              <label style={{ display: "flex", alignItems: "center" }}>
+                <span style={{ marginRight: "1.2rem" }}>Passed away: </span>
+                <Switch
+                  onChange={this.onChangePassedAway}
+                  checked={this.state.passedAway}
+                />
+              </label>
+            </div>
           </div>
+        </div>
+        <div className="input-group__item">
+          <textarea
+            className="textarea-input"
+            onChange={this.onInputChange}
+            placeholder="Comments"
+            type="text"
+            value={this.state.comments}
+            name="comments"
+            rows="3"
+          />
         </div>
         <div>
           <button className="button">Save Pet</button>

@@ -48,7 +48,10 @@ test("should call onSubmit prop for valid form submission", () => {
     sterilized: pets[0].sterilized,
     size: pets[0].size,
     color: pets[0].color,
-    avatarURL: pets[0].avatarURL
+    avatarURL: pets[0].avatarURL,
+    adopted: pets[0].adopted,
+    passedAway: pets[0].passedAway,
+    comments: pets[0].comments
   });
 });
 

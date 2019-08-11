@@ -32,7 +32,10 @@ beforeEach(done => {
       sterilized,
       size,
       color,
-      avatarURL
+      avatarURL,
+      adopted,
+      passedAway,
+      comments
     }) => {
       petsData[id] = {
         name,
@@ -44,7 +47,10 @@ beforeEach(done => {
         sterilized,
         size,
         color,
-        avatarURL
+        avatarURL,
+        adopted,
+        passedAway,
+        comments
       };
     }
   );
@@ -134,7 +140,10 @@ test("should add pet to database and store", done => {
     sterilized: true,
     size: "M",
     color: "White",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: "Need meds!"
   };
   store
     .dispatch(startAddPet(petData))
@@ -169,7 +178,10 @@ test("should add pet with defaults to database and store", done => {
     sterilized: false,
     size: "",
     color: "",
-    avatarURL: ""
+    avatarURL: "",
+    adopted: false,
+    passedAway: false,
+    comments: ""
   };
   store
     .dispatch(startAddPet({}))

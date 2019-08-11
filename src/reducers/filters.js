@@ -33,6 +33,12 @@ export default (state = filtersReducerDefaultState, action) => {
         ...state,
         calendarDate: action.calendarDate
       };
+    case "SET_FILTER": {
+      return {
+        ...state,
+        filter: action.filter
+      };
+    }
     default:
       return state;
   }

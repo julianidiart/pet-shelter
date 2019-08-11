@@ -26,3 +26,9 @@ export const setCalendarDate = calendarDate => ({
   type: "SET_CALENDAR_DATE",
   calendarDate
 });
+
+// SET_FILTER
+export const setFilter = filter => ({
+  type: "SET_FILTER",
+  filter
+});

@@ -3,16 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 
-export default ({
-  id,
-  name,
-  place,
-  sex,
-  breed,
-  sterilized,
-  color,
-  avatarURL
-}) => {
+export default ({ id, name, place, sex, breed, color }) => {
   const gender =
     sex.toLowerCase() === "m" ? (
       <FontAwesomeIcon icon={faMars} title="male" />

@@ -64,126 +64,153 @@ exports[`should render PetsList with pets 1`] = `
     className="list-body"
   >
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-63158400000}
       breed="Incrocio"
       chip="123ABC123"
       color="Black and white"
+      comments="Test pet!"
       id="1"
       key="1"
       name="Marla"
+      passedAway={false}
       place="Barchetta"
       sex="F"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-47437200000}
       breed="Incrocio"
       chip="123ABC123"
       color="Black and white"
+      comments="Test pet!"
       id="2"
       key="2"
       name="Bimba"
+      passedAway={false}
       place="Barchetta"
       sex="F"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-15901200000}
       breed="Incrocio"
       chip="123ABC123"
       color="Black and white"
+      comments="Test pet!"
       id="3"
       key="3"
       name="Aimee"
+      passedAway={false}
       place="Barchetta"
       sex="F"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-110595600000}
       breed="Incrocio"
       chip=""
       color="Black and white"
+      comments="Test pet!"
       id="4"
       key="4"
       name="Maia"
+      passedAway={false}
       place="Campagna"
       sex="F"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-347155200000}
       breed="Incrocio"
       chip=""
       color="Black and white"
+      comments="Test pet!"
       id="5"
       key="5"
       name="Emma"
+      passedAway={false}
       place="Barchetta"
       sex="F"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-252460800000}
       breed="Incrocio"
       chip="123ABC123"
       color="Black and white"
+      comments="Test pet!"
       id="6"
       key="6"
       name="Tommy"
+      passedAway={false}
       place="Macelo"
       sex="M"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-283996800000}
       breed="Incrocio"
       chip=""
       color="Black and white"
+      comments="Test pet!"
       id="7"
       key="7"
       name="Bello Bruno"
+      passedAway={false}
       place="Sasi"
       sex="M"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-126230400000}
       breed="Incrocio"
       chip="123ABC123"
       color="Black and white"
+      comments="Test pet!"
       id="8"
       key="8"
       name="Bubu"
+      passedAway={false}
       place="Sasi"
       sex="M"
       size="M"
       sterilized={true}
     />
     <_default
+      adopted={false}
       avatarURL=""
       birthdate={-157766400000}
       breed="Incrocio"
       chip=""
       color="Black and white"
+      comments="Test pet!"
       id="9"
       key="9"
       name="Blaky"
+      passedAway={false}
       place="Macelo"
       sex="M"
       size="M"

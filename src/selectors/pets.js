@@ -1,6 +1,6 @@
 import moment from "moment";
 
-export default (pets, { text, sortBy, startDate, endDate }) => {
+export default (pets, { text, sortBy, startDate, endDate, filter }) => {
   return pets
     .filter(pet => {
       const birthdateMoment = moment(pet.birthdate);
@@ -14,6 +14,8 @@ export default (pets, { text, sortBy, startDate, endDate }) => {
         pet.name.toLowerCase().includes(text.toLowerCase()) ||
         pet.place.toLowerCase().includes(text.toLowerCase()) ||
         pet.breed.toLowerCase().includes(text.toLowerCase()) ||
+        (pet.comments &&
+          pet.comments.toLowerCase().includes(text.toLowerCase())) ||
         (pet.color
           ? pet.color.toLowerCase().includes(text.toLowerCase())
           : false) ||
@@ -21,8 +23,32 @@ export default (pets, { text, sortBy, startDate, endDate }) => {
           .toString()
           .toLowerCase()
           .includes(text.toLowerCase());
+      let filterMatch = true;
+      const adoptedOrPassedAway = pet.adopted || pet.passedAway;
+      switch (filter) {
+        case "sterilized":
+          filterMatch = !adoptedOrPassedAway && pet.sterilized === true;
+          break;
+        case "non-sterilized":
+          filterMatch = !adoptedOrPassedAway && pet.sterilized === false;
+          break;
+        case "chipped":
+          filterMatch = !adoptedOrPassedAway && pet.chip !== "";
+          break;
+        case "non-chipped":
+          filterMatch = !adoptedOrPassedAway && pet.chip === "";
+          break;
+        case "adopted":
+          filterMatch = pet.adopted === true;
+          break;
+        case "passed-away":
+          filterMatch = pet.passedAway === true;
+          break;
+        default:
+          filterMatch = !adoptedOrPassedAway;
+      }
 
-      return startDateMatch && endDateMatch && textMatch;
+      return startDateMatch && endDateMatch && textMatch && filterMatch;
     })
     .sort((a, b) => {
       if (sortBy === "date") {

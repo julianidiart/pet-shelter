@@ -5,7 +5,8 @@ import {
   setTextFilter,
   sortByDate,
   setStartDate,
-  setEndDate
+  setEndDate,
+  setFilter
 } from "../../../actions/filters";
 
 export class PetsListFilters extends React.Component {
@@ -21,6 +22,9 @@ export class PetsListFilters extends React.Component {
   };
   onTextChange = e => {
     this.props.setTextFilter(e.target.value);
+  };
+  onFilterChange = e => {
+    this.props.setFilter(e.target.value);
   };
   onSortChange = e => {
     if (e.target.value === "date") {
@@ -39,6 +43,21 @@ export class PetsListFilters extends React.Component {
               value={this.props.filters.text}
               onChange={this.onTextChange}
             />
+          </div>
+          <div className="input-group__item">
+            <select
+              className="select"
+              value={this.props.filters.filter}
+              onChange={this.onFilterChange}
+            >
+              <option value="">Ready for adoption</option>
+              <option value="sterilized">Sterilized</option>
+              <option value="non-sterilized">Non sterilized</option>
+              <option value="chipped">Chipped</option>
+              <option value="non-chipped">Non chipped</option>
+              <option value="adopted">Adopted</option>
+              <option value="passed-away">Passed away</option>
+            </select>
           </div>
           {/* <div className="input-group__item">
             <select
@@ -78,7 +97,8 @@ const mapDispatchToProps = dispatch => ({
   setTextFilter: text => dispatch(setTextFilter(text)),
   sortByDate: () => dispatch(sortByDate()),
   setStartDate: startDate => dispatch(setStartDate(startDate)),
-  setEndDate: endDate => dispatch(setEndDate(endDate))
+  setEndDate: endDate => dispatch(setEndDate(endDate)),
+  setFilter: filter => dispatch(setFilter(filter))
 });
 
 export default connect(
