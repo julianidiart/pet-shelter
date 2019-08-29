@@ -17,5 +17,12 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const imageStorage = firebase.storage().ref("images");
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 
-export { firebase, googleAuthProvider, database as default, imageStorage };
+export {
+  firebase,
+  googleAuthProvider,
+  facebookAuthProvider,
+  database as default,
+  imageStorage
+};

@@ -20,3 +20,11 @@
   background: $dark-purple;
   color: white;
 }
+
+.button--no-right-border {
+  border-right: 0;
+}
+
+.button--margin-bottom {
+  margin-bottom: $s-size;
+}
