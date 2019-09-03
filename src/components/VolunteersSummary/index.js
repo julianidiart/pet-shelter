@@ -6,26 +6,43 @@ import {
   selectVolunteers,
   nextVolunteerToArrive
 } from "../../selectors/volunteers";
+import MultiLanguageText from "../MultiLanguageText";
 
 export const VolunteersSummary = ({ volunteersCount, nextVolunteer }) => {
-  const volunteerWord = volunteersCount === 1 ? "volunteer" : "volunteers";
+  const volunteerWord =
+    volunteersCount === 1 ? (
+      <MultiLanguageText en="volunteer" it="volontario" es="voluntario" />
+    ) : (
+      <MultiLanguageText en="volunteers" it="volontari" es="voluntarios" />
+    );
 
   return (
     <div className="page-header">
       <div className="content-container">
         <div className="page-header__top">
           <h1 className="page-header__title">
-            Viewing <span>{volunteersCount}</span> {volunteerWord}
+            <MultiLanguageText en="Viewing" it="Guardando" es="Viendo" />{" "}
+            <span>{volunteersCount}</span> {volunteerWord}
           </h1>
           <div className="page-header__actions">
             <Link className="button" to="/add-volunteer">
-              Add Volunteer
+              <MultiLanguageText
+                en="Add Volunteer"
+                it="Aggiungi Volontario"
+                es="Agregar Voluntario"
+              />
             </Link>
           </div>
         </div>
         {nextVolunteer ? (
           <p className="page-header__title">
-            <i>Next to arrive: </i>
+            <i>
+              <MultiLanguageText
+                en="Next to arrive:"
+                it="Prossimo arrivo:"
+                es="Siguiente en llegar:"
+              />
+            </i>{" "}
             {nextVolunteer.name +
               " (" +
               moment(nextVolunteer.arrivalDate).format("DD/MM/YYYY") +
@@ -33,7 +50,13 @@ export const VolunteersSummary = ({ volunteersCount, nextVolunteer }) => {
           </p>
         ) : (
           <p className="page-header__title">
-            <i>No volunteers arriving soon!</i>
+            <i>
+              <MultiLanguageText
+                en="No volunteers arriving soon!"
+                it="Nessun volontario arriverà presto!"
+                es="¡No hay voluntarios llegando pronto!"
+              />
+            </i>
           </p>
         )}
       </div>

@@ -4,10 +4,13 @@ import { SingleDatePicker } from "react-dates";
 import Switch from "react-switch";
 import FileUploader from "react-firebase-file-uploader";
 import { imageStorage } from "../../firebase";
-
 import Loading from "../Loading";
+import LanguageContext from "../../contexts/LanguageContext";
+import MultiLanguageText from "../MultiLanguageText";
 
 export default class PetForm extends Component {
+  static contextType = LanguageContext;
+
   constructor(props) {
     super(props);
 
@@ -95,8 +98,27 @@ export default class PetForm extends Component {
         comments: this.state.comments
       });
     } else {
-      const error = "The pet should have a name!";
+      const error = (
+        <MultiLanguageText
+          en="The pet should have a name!"
+          it="L'animale dovrebbe avere un nome!"
+          es="¡La mascota debe tener un nombre!"
+        />
+      );
       this.setState(() => ({ error }));
+    }
+  };
+
+  multiLanguageText = text => {
+    switch (this.context.language) {
+      case "en":
+        return text.en;
+      case "it":
+        return text.it;
+      case "es":
+        return text.es;
+      default:
+        return text;
     }
   };
 
@@ -131,7 +153,13 @@ export default class PetForm extends Component {
             ) : this.state.avatarIsUploading ? (
               <Loading />
             ) : (
-              <span>No image selected!</span>
+              <span>
+                <MultiLanguageText
+                  en="No image selected!"
+                  it="Nessuna immagine selezionata!"
+                  es="¡Ninguna imagen seleccionada!"
+                />
+              </span>
             )}
           </div>
           <div>
@@ -152,7 +180,11 @@ export default class PetForm extends Component {
               <input
                 autoFocus
                 onChange={this.onInputChange}
-                placeholder="Name"
+                placeholder={this.multiLanguageText({
+                  en: "Name",
+                  it: "Nome",
+                  es: "Nombre"
+                })}
                 className="text-input"
                 type="text"
                 value={this.state.name}
@@ -182,8 +214,20 @@ export default class PetForm extends Component {
                 onChange={this.onInputChange}
                 name="sex"
               >
-                <option value="m">Male</option>
-                <option value="f">Female</option>
+                <option value="m">
+                  {this.multiLanguageText({
+                    en: "Male",
+                    it: "Maschio",
+                    es: "Macho"
+                  })}
+                </option>
+                <option value="f">
+                  {this.multiLanguageText({
+                    en: "Female",
+                    it: "Femmina",
+                    es: "Hembra"
+                  })}
+                </option>
               </select>
             </div>
             <div className="input-group__item">
@@ -193,16 +237,38 @@ export default class PetForm extends Component {
                 onChange={this.onInputChange}
                 name="size"
               >
-                <option value="s">Small</option>
-                <option value="m">Medium</option>
-                <option value="l">Large</option>
+                <option value="s">
+                  {this.multiLanguageText({
+                    en: "Small",
+                    it: "Piccolo",
+                    es: "Pequeño"
+                  })}
+                </option>
+                <option value="m">
+                  {this.multiLanguageText({
+                    en: "Medium",
+                    it: "Medio",
+                    es: "Medio"
+                  })}
+                </option>
+                <option value="l">
+                  {this.multiLanguageText({
+                    en: "Large",
+                    it: "Grande",
+                    es: "Grande"
+                  })}
+                </option>
               </select>
             </div>
             <div className="input-group__item">
               <input
                 className="text-input"
                 onChange={this.onInputChange}
-                placeholder="Breed"
+                placeholder={this.multiLanguageText({
+                  en: "Breed",
+                  it: "Razza",
+                  es: "Raza"
+                })}
                 type="text"
                 value={this.state.breed}
                 name="breed"
@@ -212,7 +278,11 @@ export default class PetForm extends Component {
               <input
                 className="text-input"
                 onChange={this.onInputChange}
-                placeholder="Color"
+                placeholder={this.multiLanguageText({
+                  en: "Color",
+                  it: "Colore",
+                  es: "Color"
+                })}
                 type="text"
                 value={this.state.color}
                 name="color"
@@ -232,7 +302,11 @@ export default class PetForm extends Component {
               <input
                 className="text-input"
                 onChange={this.onInputChange}
-                placeholder="Place"
+                placeholder={this.multiLanguageText({
+                  en: "Place",
+                  it: "Posto",
+                  es: "Lugar"
+                })}
                 type="text"
                 value={this.state.place}
                 name="place"
@@ -240,7 +314,14 @@ export default class PetForm extends Component {
             </div>
             <div className="input-group__item">
               <label style={{ display: "flex", alignItems: "center" }}>
-                <span style={{ marginRight: "1.2rem" }}>Sterilized: </span>
+                <span style={{ marginRight: "1.2rem" }}>
+                  <MultiLanguageText
+                    en="Sterilized"
+                    it="Sterilizzato"
+                    es="Esterilizado"
+                  />
+                  :{" "}
+                </span>
                 <Switch
                   onChange={this.onChangeSterilized}
                   checked={this.state.sterilized}
@@ -249,7 +330,10 @@ export default class PetForm extends Component {
             </div>
             <div className="input-group__item">
               <label style={{ display: "flex", alignItems: "center" }}>
-                <span style={{ marginRight: "1.2rem" }}>Adopted: </span>
+                <span style={{ marginRight: "1.2rem" }}>
+                  <MultiLanguageText en="Adopted" it="Adottato" es="Adoptado" />
+                  :{" "}
+                </span>
                 <Switch
                   onChange={this.onChangeAdopted}
                   checked={this.state.adopted}
@@ -258,7 +342,14 @@ export default class PetForm extends Component {
             </div>
             <div className="input-group__item">
               <label style={{ display: "flex", alignItems: "center" }}>
-                <span style={{ marginRight: "1.2rem" }}>Passed away: </span>
+                <span style={{ marginRight: "1.2rem" }}>
+                  <MultiLanguageText
+                    en="Passed away"
+                    it="Deceduto"
+                    es="Fallecido"
+                  />
+                  :{" "}
+                </span>
                 <Switch
                   onChange={this.onChangePassedAway}
                   checked={this.state.passedAway}
@@ -271,7 +362,11 @@ export default class PetForm extends Component {
           <textarea
             className="textarea-input"
             onChange={this.onInputChange}
-            placeholder="Comments"
+            placeholder={this.multiLanguageText({
+              en: "Comments",
+              it: "Commenti",
+              es: "Comentarios"
+            })}
             type="text"
             value={this.state.comments}
             name="comments"
@@ -279,7 +374,13 @@ export default class PetForm extends Component {
           />
         </div>
         <div>
-          <button className="button">Save Pet</button>
+          <button className="button">
+            <MultiLanguageText
+              en="Save Pet"
+              it="Salvare Animale"
+              es="Guardar Mascota"
+            />
+          </button>
         </div>
       </form>
     );

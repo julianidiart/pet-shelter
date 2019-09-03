@@ -3,14 +3,19 @@ import { connect } from "react-redux";
 import Calendar from "react-calendar";
 import moment from "moment";
 import { setTextFilter, setCalendarDate } from "../../../actions/filters";
+import LanguageContext from "../../../contexts/LanguageContext";
 
 export class VolunteersListFilters extends React.Component {
+  static contextType = LanguageContext;
+
   state = {
     calendarFocused: null
   };
+
   onTextChange = e => {
     this.props.setTextFilter(e.target.value);
   };
+
   onClickDay = value => {
     const calendarDate = moment(value).isSame(
       this.props.filters.calendarDate,
@@ -20,6 +25,7 @@ export class VolunteersListFilters extends React.Component {
       : value;
     this.props.setCalendarDate(calendarDate);
   };
+
   tileContent = ({ date, view }) => {
     const calendarDate = moment(date);
     const volunteersCount = this.props.volunteers.filter(volunteer => {
@@ -33,6 +39,7 @@ export class VolunteersListFilters extends React.Component {
     }).length;
     return view === "month" ? " (" + volunteersCount + ")" : null;
   };
+
   tileClassName = ({ date, view }) => {
     const calendarDate = moment(date);
     const volunteersCount = this.props.volunteers.filter(volunteer => {
@@ -58,6 +65,20 @@ export class VolunteersListFilters extends React.Component {
     }
     return view === "month" ? calendarDayClass : null;
   };
+
+  multiLanguageText = text => {
+    switch (this.context.language) {
+      case "en":
+        return text.en;
+      case "it":
+        return text.it;
+      case "es":
+        return text.es;
+      default:
+        return text;
+    }
+  };
+
   render() {
     return (
       <div className="content-container">
@@ -65,7 +86,11 @@ export class VolunteersListFilters extends React.Component {
           <input
             type="text"
             className="text-input"
-            placeholder="Search volunteers..."
+            placeholder={this.multiLanguageText({
+              en: "Search volunteers...",
+              it: "Cerca volontari...",
+              es: "Buscar voluntarios..."
+            })}
             value={this.props.filters.text}
             onChange={this.onTextChange}
           />

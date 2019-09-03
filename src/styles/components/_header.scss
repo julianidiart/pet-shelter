@@ -9,6 +9,14 @@
   padding: $s-size 0;
 }
 
+.header__content--flags {
+  justify-content: center;
+}
+
+.header__content--flags img {
+  padding: 0 $s-size;
+}
+
 .header__title {
   color: white;
   text-decoration: none;

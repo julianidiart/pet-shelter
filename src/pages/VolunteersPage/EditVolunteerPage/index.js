@@ -5,6 +5,7 @@ import {
   startEditVolunteer,
   startRemoveVolunteer
 } from "../../../actions/volunteers";
+import MultiLanguageText from "../../../components/MultiLanguageText";
 
 export class EditVolunteerPage extends Component {
   onSubmit = volunteer => {
@@ -20,7 +21,13 @@ export class EditVolunteerPage extends Component {
       <div>
         <div className="page-header">
           <div className="content-container">
-            <h1 className="page-header__title">Add Volunteer</h1>
+            <h1 className="page-header__title">
+              <MultiLanguageText
+                en="Add Volunteer"
+                it="Aggiungi Volontario"
+                es="Agregar Voluntario"
+              />
+            </h1>
           </div>
         </div>
         <div className="content-container">
@@ -29,7 +36,11 @@ export class EditVolunteerPage extends Component {
             onSubmit={this.onSubmit}
           />
           <button className="button button--secondary" onClick={this.onClick}>
-            Remove Volunteer
+            <MultiLanguageText
+              en="Remove Volunteer"
+              it="Rimuovere Volontario"
+              es="Eliminar Voluntario"
+            />
           </button>
         </div>
       </div>

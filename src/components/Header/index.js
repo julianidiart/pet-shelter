@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { startLogout } from "../../actions/auth";
+import LanguageSelector from "../LanguageSelector";
+import MultiLanguageText from "../MultiLanguageText";
 
 export const Header = ({ startLogout }) => (
   <header className="header">
@@ -12,15 +14,20 @@ export const Header = ({ startLogout }) => (
         </Link>
         <div>
           <Link className="button button--link" to="/pets">
-            Pets
+            <MultiLanguageText en="Pets" it="Animali" es="Mascotas" />
           </Link>
           <Link className="button button--link" to="/volunteers">
-            Volunteers
+            <MultiLanguageText
+              en="Volunteers"
+              it="Volontari"
+              es="Voluntarios"
+            />
           </Link>
           <button className="button button--link" onClick={startLogout}>
-            Logout
+            <MultiLanguageText en="Logout" it="Esci" es="Salir" />
           </button>
         </div>
+        <LanguageSelector />
       </div>
     </div>
   </header>

@@ -8,29 +8,51 @@ import {
   setEndDate,
   setFilter
 } from "../../../actions/filters";
+import LanguageContext from "../../../contexts/LanguageContext";
 
 export class PetsListFilters extends React.Component {
+  static contextType = LanguageContext;
+
   state = {
     calendarFocused: null
   };
+
   onDatesChange = ({ startDate, endDate }) => {
     this.props.setStartDate(startDate);
     this.props.setEndDate(endDate);
   };
+
   onFocusChange = calendarFocused => {
     this.setState(() => ({ calendarFocused }));
   };
+
   onTextChange = e => {
     this.props.setTextFilter(e.target.value);
   };
+
   onFilterChange = e => {
     this.props.setFilter(e.target.value);
   };
+
   onSortChange = e => {
     if (e.target.value === "date") {
       this.props.sortByDate();
     }
   };
+
+  multiLanguageText = text => {
+    switch (this.context.language) {
+      case "en":
+        return text.en;
+      case "it":
+        return text.it;
+      case "es":
+        return text.es;
+      default:
+        return text;
+    }
+  };
+
   render() {
     return (
       <div className="content-container">
@@ -39,7 +61,11 @@ export class PetsListFilters extends React.Component {
             <input
               type="text"
               className="text-input"
-              placeholder="Search pets..."
+              placeholder={this.multiLanguageText({
+                en: "Search pet...",
+                it: "Cerca animali...",
+                es: "Buscar mascotas..."
+              })}
               value={this.props.filters.text}
               onChange={this.onTextChange}
             />
@@ -50,24 +76,57 @@ export class PetsListFilters extends React.Component {
               value={this.props.filters.filter}
               onChange={this.onFilterChange}
             >
-              <option value="">Ready for adoption</option>
-              <option value="sterilized">Sterilized</option>
-              <option value="non-sterilized">Non sterilized</option>
-              <option value="chipped">Chipped</option>
-              <option value="non-chipped">Non chipped</option>
-              <option value="adopted">Adopted</option>
-              <option value="passed-away">Passed away</option>
+              <option value="">
+                {this.multiLanguageText({
+                  en: "Ready for adoption",
+                  it: "Pronto per l'adozione",
+                  es: "Listo para adoptar"
+                })}
+              </option>
+              <option value="sterilized">
+                {this.multiLanguageText({
+                  en: "Sterilized",
+                  it: "Sterilizzato",
+                  es: "Esterilizado"
+                })}
+              </option>
+              <option value="non-sterilized">
+                {this.multiLanguageText({
+                  en: "Not sterilized",
+                  it: "Non sterilizzato",
+                  es: "No esterilizado"
+                })}
+              </option>
+              <option value="chipped">
+                {this.multiLanguageText({
+                  en: "Chipped",
+                  it: "Chippato",
+                  es: "Con chip"
+                })}
+              </option>
+              <option value="non-chipped">
+                {this.multiLanguageText({
+                  en: "Not chipped",
+                  it: "Non chippato",
+                  es: "Sin chip"
+                })}
+              </option>
+              <option value="adopted">
+                {this.multiLanguageText({
+                  en: "Adopted",
+                  it: "Adottato",
+                  es: "Adoptado"
+                })}
+              </option>
+              <option value="passed-away">
+                {this.multiLanguageText({
+                  en: "Passed away",
+                  it: "Deceduto",
+                  es: "Fallecido"
+                })}
+              </option>
             </select>
           </div>
-          {/* <div className="input-group__item">
-            <select
-              className="select"
-              value={this.props.filters.sortBy}
-              onChange={this.onSortChange}
-            >
-              <option value="date">Date</option>
-            </select>
-          </div> */}
           <div className="input-group__item">
             <DateRangePicker
               startDateId="startDate"
@@ -81,6 +140,16 @@ export class PetsListFilters extends React.Component {
               numberOfMonths={1}
               isOutsideRange={() => false}
               displayFormat="DD/MM/YYYY"
+              startDatePlaceholderText={this.multiLanguageText({
+                en: "Start Date",
+                it: "Data Inizio",
+                es: "Fecha Inicio"
+              })}
+              endDatePlaceholderText={this.multiLanguageText({
+                en: "End Date",
+                it: "Data Fine",
+                es: "Fecha Fin"
+              })}
             />
           </div>
         </div>

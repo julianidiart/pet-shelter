@@ -2,27 +2,46 @@ import React from "react";
 import { connect } from "react-redux";
 import { startGoogleLogin, startFacebookLogin } from "../../actions/auth";
 import backgroundPattern from "../../assets/images/background-pattern.png";
+import LanguageSelector from "../../components/LanguageSelector";
+import MultiLanguageText from "../../components/MultiLanguageText";
 
-export const LoginPage = ({ startGoogleLogin, startFacebookLogin }) => (
-  <div
-    className="box-layout"
-    style={{ background: `url(${backgroundPattern})` }}
-  >
-    <div className="box-layout__box">
-      <h1 className="box-layout__title">Pet shelter</h1>
-      <p>Web app to organize your pet shelter!</p>
-      <button
-        className="button button--margin-bottom"
-        onClick={startFacebookLogin}
-      >
-        Login with Facebook
-      </button>
-      <button className="button" onClick={startGoogleLogin}>
-        Login with Google
-      </button>
+export const LoginPage = ({ startGoogleLogin, startFacebookLogin }) => {
+  return (
+    <div
+      className="box-layout"
+      style={{ background: `url(${backgroundPattern})` }}
+    >
+      <div className="box-layout__box">
+        <LanguageSelector />
+        <h1 className="box-layout__title">Pet Shelter</h1>
+        <p>
+          <MultiLanguageText
+            en="Web app to organize and manage your pet shelter!"
+            it="App web per organizzare e gestire il tuo rifugio per animali domestici!"
+            es="¡Aplicación web para organizar y administrar tu refugio para mascotas!"
+          />
+        </p>
+        <button
+          className="button button--margin-bottom"
+          onClick={startFacebookLogin}
+        >
+          <MultiLanguageText
+            en="Login with Facebook"
+            it="Accedi con Facebook"
+            es="Iniciar con Facebook"
+          />
+        </button>
+        <button className="button" onClick={startGoogleLogin}>
+          <MultiLanguageText
+            en="Login with Google"
+            it="Accedi con Google"
+            es="Iniciar con Google"
+          />
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
   startGoogleLogin: () => dispatch(startGoogleLogin()),

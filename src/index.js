@@ -7,9 +7,8 @@ import { startSetPets } from "./actions/pets";
 import { startSetVolunteers } from "./actions/volunteers";
 import { login, logout } from "./actions/auth";
 import { firebase } from "./firebase";
-
+import { LanguageStore } from "./contexts/LanguageContext";
 import Loading from "./components/Loading";
-
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/initialize";
@@ -21,7 +20,9 @@ const store = configureStore();
 
 const app = (
   <Provider store={store}>
-    <AppRouter />
+    <LanguageStore>
+      <AppRouter />
+    </LanguageStore>
   </Provider>
 );
 

@@ -2,13 +2,20 @@ import React from "react";
 import { connect } from "react-redux";
 import VolunteersListItem from "./VolunteersListItem";
 import { selectVolunteers } from "../../selectors/volunteers";
+import MultiLanguageText from "../MultiLanguageText";
 
 export const VolunteersList = ({ volunteers }) => (
   <div className="content-container">
     <div className="list-header">
-      <div className="show-for-mobile">Volunteers</div>
-      <div className="show-for-desktop">Name</div>
-      <div className="show-for-desktop">Stay</div>
+      <div className="show-for-mobile">
+        <MultiLanguageText en="Volunteer" it="Volontario" es="Voluntario" />
+      </div>
+      <div className="show-for-desktop">
+        <MultiLanguageText en="Name" it="Nome" es="Nombre" />
+      </div>
+      <div className="show-for-desktop">
+        <MultiLanguageText en="Volunteer" it="Rimanere" es="Estadia" />
+      </div>
     </div>
     <div className="list-body">
       {volunteers.length === 0 ? (

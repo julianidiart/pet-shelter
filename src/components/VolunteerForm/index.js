@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { SingleDatePicker } from "react-dates";
+import LanguageContext from "../../contexts/LanguageContext";
+import MultiLanguageText from "../MultiLanguageText";
 
 export default class VolunteerForm extends Component {
+  static contextType = LanguageContext;
+
   constructor(props) {
     super(props);
 
@@ -67,6 +71,19 @@ export default class VolunteerForm extends Component {
     }
   };
 
+  multiLanguageText = text => {
+    switch (this.context.language) {
+      case "en":
+        return text.en;
+      case "it":
+        return text.it;
+      case "es":
+        return text.es;
+      default:
+        return text;
+    }
+  };
+
   render() {
     return (
       <form className="form" onSubmit={this.onSubmit}>
@@ -74,7 +91,11 @@ export default class VolunteerForm extends Component {
         <input
           autoFocus
           onChange={this.onInputChange}
-          placeholder="Name"
+          placeholder={this.multiLanguageText({
+            en: "Name",
+            it: "Nome",
+            es: "Nombre"
+          })}
           className="text-input"
           type="text"
           value={this.state.name}
@@ -83,7 +104,11 @@ export default class VolunteerForm extends Component {
         <input
           className="text-input"
           onChange={this.onInputChange}
-          placeholder="Country"
+          placeholder={this.multiLanguageText({
+            en: "Country",
+            it: "Paese",
+            es: "País"
+          })}
           type="text"
           value={this.state.country}
           name="country"
@@ -109,7 +134,13 @@ export default class VolunteerForm extends Component {
           />
         </div>
         <div>
-          <button className="button">Save Volunteer</button>
+          <button className="button">
+            <MultiLanguageText
+              en="Save Volunteer"
+              it="Salvare Volontario"
+              es="Guardar Voluntario"
+            />
+          </button>
         </div>
       </form>
     );

@@ -2,18 +2,31 @@ import React from "react";
 import { connect } from "react-redux";
 import PetsListItem from "./PetsListItem";
 import selectPets from "../../selectors/pets";
+import MultiLanguageText from "../MultiLanguageText";
 
 export const PetsList = ({ pets }) => (
   <div className="content-container">
     <div className="list-header">
-      <div className="show-for-mobile">Pets</div>
-      <div className="show-for-desktop">Name</div>
-      <div className="show-for-desktop">Place</div>
+      <div className="show-for-mobile">
+        <MultiLanguageText en="Pet" it="Animale" es="Mascota" />
+      </div>
+      <div className="show-for-desktop">
+        <MultiLanguageText en="Name" it="Nome" es="Nombre" />
+      </div>
+      <div className="show-for-desktop">
+        <MultiLanguageText en="Place" it="Posto" es="Lugar" />
+      </div>
     </div>
     <div className="list-body">
       {pets.length === 0 ? (
         <div className="list-item list-item--message">
-          <span>No pets!</span>
+          <span>
+            <MultiLanguageText
+              en="No pets!"
+              it="No ci sono animali!"
+              es="¡No hay mascotas!"
+            />
+          </span>
         </div>
       ) : (
         pets &&
