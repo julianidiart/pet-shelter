@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { startGoogleLogin, startFacebookLogin } from "../../actions/auth";
 import backgroundPattern from "../../assets/images/background-pattern.png";
 import LanguageSelector from "../../components/LanguageSelector";
@@ -31,13 +32,23 @@ export const LoginPage = ({ startGoogleLogin, startFacebookLogin }) => {
             es="Iniciar con Facebook"
           />
         </button>
-        <button className="button" onClick={startGoogleLogin}>
+        <button
+          className="button button--margin-bottom"
+          onClick={startGoogleLogin}
+        >
           <MultiLanguageText
             en="Login with Google"
             it="Accedi con Google"
             es="Iniciar con Google"
           />
         </button>
+        <Link className="button button--secondary" to="/privacy-policy">
+          <MultiLanguageText
+            en="Privacy Policy"
+            it="Informativa sulla Privacy"
+            es="Política de privacidad"
+          />
+        </Link>
       </div>
     </div>
   );

@@ -6,12 +6,23 @@
   width: 100vw;
 }
 
+.box-layout--privacy-policy {
+  height: auto;
+}
+
 .box-layout__box {
   background: $yellow;
   border: 5px solid $purple;
   padding: $l-size $m-size;
   text-align: center;
   width: 25rem;
+}
+
+.box-layout__privacy-policy {
+  background: $yellow;
+  border: 5px solid $purple;
+  margin: $l-size;
+  padding: $l-size $m-size;
 }
 
 .box-layout__title {

@@ -9,6 +9,7 @@ import EditPetPage from "../pages/PetsPage/EditPetPage";
 import VolunteersPage from "../pages/VolunteersPage";
 import AddVolunteerPage from "../pages/VolunteersPage/AddVolunteerPage";
 import EditVolunteerPage from "../pages/VolunteersPage/EditVolunteerPage";
+import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
@@ -19,6 +20,7 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact />
+        <PublicRoute path="/privacy-policy" component={PrivacyPolicyPage} />
         <PrivateRoute path="/add-pet" component={AddPetPage} />
         <PrivateRoute path="/pets/:id" component={EditPetPage} />
         <PrivateRoute path="/pets" component={PetsPage} />
