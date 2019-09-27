@@ -8,12 +8,12 @@ import {
 import MultiLanguageText from "../../../components/MultiLanguageText";
 
 export class EditVolunteerPage extends Component {
-  onSubmit = volunteer => {
-    this.props.startEditVolunteer(this.props.volunteer.id, volunteer);
+  onSubmit = async volunteer => {
+    await this.props.startEditVolunteer(this.props.volunteer.id, volunteer);
     this.props.history.push("/volunteers");
   };
-  onClick = () => {
-    this.props.startRemoveVolunteer({ id: this.props.volunteer.id });
+  onClick = async () => {
+    await this.props.startRemoveVolunteer({ id: this.props.volunteer.id });
     this.props.history.push("/volunteers");
   };
   render() {

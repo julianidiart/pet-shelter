@@ -5,8 +5,8 @@ import { startAddVolunteer } from "../../../actions/volunteers";
 import MultiLanguageText from "../../../components/MultiLanguageText";
 
 export class AddVolunteerPage extends Component {
-  onSubmit = volunteer => {
-    this.props.startAddVolunteer(volunteer);
+  onSubmit = async volunteer => {
+    await this.props.startAddVolunteer(volunteer);
     this.props.history.push("/volunteers");
   };
   render() {
