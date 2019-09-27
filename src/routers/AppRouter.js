@@ -17,19 +17,17 @@ export const browserHistory = history.createBrowserHistory();
 
 const AppRouter = () => (
   <Router history={browserHistory}>
-    <div>
-      <Switch>
-        <PublicRoute path="/" component={LoginPage} exact />
-        <PublicRoute path="/privacy-policy" component={PrivacyPolicyPage} />
-        <PrivateRoute path="/add-pet" component={AddPetPage} />
-        <PrivateRoute path="/pets/:id" component={EditPetPage} />
-        <PrivateRoute path="/pets" component={PetsPage} />
-        <PrivateRoute path="/add-volunteer" component={AddVolunteerPage} />
-        <PrivateRoute path="/volunteers/:id" component={EditVolunteerPage} />
-        <PrivateRoute path="/volunteers" component={VolunteersPage} />
-        <Redirect to="/" />
-      </Switch>
-    </div>
+    <Switch>
+      <PublicRoute path="/" component={LoginPage} exact />
+      <PublicRoute path="/privacy-policy" component={PrivacyPolicyPage} />
+      <PrivateRoute path="/add-pet" component={AddPetPage} />
+      <PrivateRoute path="/pets/:id" component={EditPetPage} />
+      <PrivateRoute path="/pets" component={PetsPage} />
+      <PrivateRoute path="/add-volunteer" component={AddVolunteerPage} />
+      <PrivateRoute path="/volunteers/:id" component={EditVolunteerPage} />
+      <PrivateRoute path="/volunteers" component={VolunteersPage} />
+      <Redirect to="/" />
+    </Switch>
   </Router>
 );
 
