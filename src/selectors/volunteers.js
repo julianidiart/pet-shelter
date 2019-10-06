@@ -1,6 +1,9 @@
 import moment from "moment";
 
-export const selectVolunteers = (volunteers, { text, calendarDate }) => {
+export const selectVolunteers = (
+  volunteers,
+  { text, calendarDate, startDate }
+) => {
   return volunteers
     .filter(volunteer => {
       const arrivalDateMoment = moment(volunteer.arrivalDate);
@@ -16,8 +19,11 @@ export const selectVolunteers = (volunteers, { text, calendarDate }) => {
       const textMatch =
         volunteer.name.toLowerCase().includes(text.toLowerCase()) ||
         volunteer.country.toLowerCase().includes(text.toLowerCase());
-
-      return calendarDateMatch && textMatch;
+      let upcomingArrival = true;
+      if (startDate) {
+        upcomingArrival = startDate.unix() * 1000 <= volunteer.arrivalDate;
+      }
+      return calendarDateMatch && textMatch && upcomingArrival;
     })
     .sort((a, b) => {
       return a.arrivalDate > b.arrivalDate ? 1 : -1;

@@ -2,11 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 import Calendar from "react-calendar";
 import moment from "moment";
-import { setTextFilter, setCalendarDate } from "../../../actions/filters";
+import Switch from "react-switch";
+import {
+  setTextFilter,
+  setCalendarDate,
+  setStartDate
+} from "../../../actions/filters";
 import LanguageContext from "../../../contexts/LanguageContext";
+import MultiLanguageText from "../../MultiLanguageText";
 
 export class VolunteersListFilters extends React.Component {
   static contextType = LanguageContext;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      nextVolunteers: false
+    };
+  }
 
   state = {
     calendarFocused: null
@@ -79,6 +92,15 @@ export class VolunteersListFilters extends React.Component {
     }
   };
 
+  onChangeNextVolunteers = nextVolunteers => {
+    this.setState(() => ({ nextVolunteers }));
+    if (nextVolunteers) {
+      this.props.setStartDate(moment(new Date().setHours(0, 0, 0, 0)));
+    } else {
+      this.props.setStartDate(null);
+    }
+  };
+
   render() {
     return (
       <div className="content-container">
@@ -95,6 +117,22 @@ export class VolunteersListFilters extends React.Component {
             onChange={this.onTextChange}
           />
         </div>
+        <label
+          style={{ display: "flex", alignItems: "center", marginBottom: 10 }}
+        >
+          <span style={{ marginRight: "1.2rem" }}>
+            <MultiLanguageText
+              en="Show only upcoming volunteers"
+              it="Mostrare solo i volontari in arrivo"
+              es="Mostrar sólo próximos voluntarios"
+            />
+            :{" "}
+          </span>
+          <Switch
+            onChange={this.onChangeNextVolunteers}
+            checked={this.state.nextVolunteers}
+          />
+        </label>
         <Calendar
           tileContent={this.tileContent}
           tileClassName={this.tileClassName}
@@ -115,7 +153,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setTextFilter: text => dispatch(setTextFilter(text)),
-  setCalendarDate: calendarDate => dispatch(setCalendarDate(calendarDate))
+  setCalendarDate: calendarDate => dispatch(setCalendarDate(calendarDate)),
+  setStartDate: startDate => dispatch(setStartDate(startDate))
 });
 
 export default connect(
